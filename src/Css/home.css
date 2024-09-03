@@ -1,5 +1,6 @@
+
 .margin_section{
-    margin-top: 30vh;
+    margin-top: 25vh;
 }
 .background_home {
   background-color: rgb(240 246 251);
@@ -7,7 +8,10 @@
   width: 100%;
   position: relative;
   overflow: hidden;
+  
+  
 }
+
 .background_home .row {
   height: 100%;
 }
@@ -131,6 +135,16 @@
   height: 30px;
   animation: moveImage 5s linear infinite;
 }
+.why_choose_descr{
+  font-size: 18px;
+  line-height: 1.75rem;
+  font-weight: 400;
+  color: rgb(102 102 102);
+}
+.background_whychooseus_home{
+  background-image: url('../assets//home3-about-bg.png');
+height: 100%;
+}
 /* CARDS ********************/
 .card_icon_home {
   padding: 5vh;
@@ -192,18 +206,7 @@
 }
 
 /* END CARDS*************** */
-/* WHY CHOOSE USE */
-.WHY_CHOOSE_US_home{
-    color: #365486;
-    font-weight: 700;
-    font-size: 20px;
-}
-.we_help_you_home{
-    font-size: 2.25rem;
-        line-height: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 4vh;
-}
+/* SERVICES HOME */
 .view_more_btn_home{
     z-index: 3;
     font-weight: 600;
@@ -233,15 +236,16 @@
 }
 .card_services_home{
     padding: 5vh;
-    margin: 1vh;
+    margin: 1vh 1vh 5vh 1vh;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;    position: relative; /* Ensure the pseudo-elements are positioned relative to the card */
     display: grid;
     border: none;
     place-items: center;
     overflow: hidden;
-    height: 250px;
+    height: 300px;
     text-align: center;
     transition: all 0.5s ease-out 0s;
+    
 }
 .card_services_home:hover{
 transform: scale(1.08);
@@ -266,6 +270,9 @@ transform: scale(1.08);
 }
 
 @media screen and (max-width: 956px) {
+   .background_home .col-sm-12 {
+    padding-left: 15px;
+  }
     .background_home {
     height: auto;
     }
