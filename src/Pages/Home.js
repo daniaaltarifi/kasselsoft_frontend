@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../Css/home.css";
 import LandingPage from "./LandingPage";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 function Home() {
+  useEffect(() => {
+    AOS.init({ duration: 1200,});
+  }, []);
   return (
     <>
-      <div className="container-fluid  background_home">
+      <div className="container-fluid  background_home" >
         <div className="row">
           <div className="col-lg-6 col-md-6 col-sm-12">
             {/* <div className="conatiner_imgandtitle_home"> */}
@@ -24,16 +29,16 @@ function Home() {
               alt="img"
               className="home3-shape3 img-fluid"
             />
-            <p className="title_home">THE MOST POWERFUL SOLUTION</p>
-            <h1 className="big_title_home">Digital Experience With Kassel</h1>
-            <p className="descr_home">
+            <p className="title_home" data-aos="fade-right">THE MOST POWERFUL SOLUTION</p>
+            <h1 className="big_title_home" data-aos="fade-right">Digital Experience With Kassel</h1>
+            <p className="descr_home" data-aos="fade-right">
               Kassel excels in crafting innovative websites and apps, seamlessly
               blending creativity with functionality. Clients trust Kassel for
               top-notch digital solutions, a testament to their industry prowess
               and dedication!
             </p>
 
-            <button type="button" className="learn_more_btn_home ">
+            <button type="button" className="learn_more_btn_home " data-aos="fade-right">
               Learn More
             </button>
           </div>
@@ -176,11 +181,11 @@ function Home() {
           </div>
         </div>
       </div>
-      <section className="margin_section">
-        <div className="container">
+      <section className="margin_section background_whychooseus_home"  data-aos="fade-up-right">
+        <div className="container ">
           <p className="WHY_CHOOSE_US_home">WHY CHOOSE US</p>
           <h3 className="we_help_you_home">We help you to make work easy</h3>
-          <p>
+          <p className="why_choose_descr">
             At Kassel Company, we understand what your business means to you.
             Our commitment is to simplify your work, delivering innovative
             solutions that enhance efficiency and allow you to concentrate
