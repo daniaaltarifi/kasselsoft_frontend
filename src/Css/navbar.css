@@ -19,7 +19,7 @@
   .text_navbar {
     font-weight: 700;
     color: #999999;
-    font-size: 17px;
+    font-size: 20px;
   }
   
   .text_navbar:hover {
@@ -34,7 +34,7 @@
   }
   
   .logo_size {
-    max-width: 50%;
+    max-width: 60%;
     height: auto;
   }
   
