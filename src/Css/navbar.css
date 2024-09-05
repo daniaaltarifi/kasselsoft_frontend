@@ -1,0 +1,187 @@
+/* src/Css/navbar.css */
+
+.navbar-light {
+    font-family: "Cairo", sans-serif;
+    background-color: rgb(240, 246, 251);
+  }
+  
+  .purple_btn {
+    background-color: rgb(240, 246, 251);
+    color: rgb(214, 43, 43);
+    border-radius: 15px;
+    margin-left: 5px;
+  }
+  
+  .purple_btn:hover {
+    background-color: #a767ac;
+  }
+  
+  .text_navbar {
+    font-weight: 700;
+    color: #999999;
+    font-size: 17px;
+  }
+  
+  .text_navbar:hover {
+    font-weight: 700;
+    color: #365486;
+    text-decoration: underline;
+  }
+  
+  .navbar-shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .logo_size {
+    max-width: 50%;
+    height: auto;
+  }
+  
+  i.bi-globe2 {
+    margin-left: 5px;
+    font-size: 1rem;
+    color: black;
+  }
+  
+ 
+  
+  .navbar-collapse {
+    margin-left: 45rem !important; /* Apply for large screens */
+  }
+  
+      
+  .navbar-toggler {
+    position: absolute;
+    background-color: rgb(240, 246, 251);
+    right: 32px;
+    z-index: 1050; /* Ensure it's on top */
+  }
+  /* DropdownWithIcon.css */
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+    border: none; /* Remove default border */
+    box-shadow: none; /* Remove default shadow */
+  
+    background-color: rgb(240, 246, 251);
+  }
+  
+  .dropdown-wrapper {
+    top: 100%;
+    left: 0;
+    background-color: rgb(240, 246, 251);
+    z-index: 1000;
+    border: none; /* Remove default border */
+  box-shadow: none; /* Remove default shadow */
+
+  }
+  
+  .small-select {
+    /* Smaller select styling */
+    font-size: 16px;
+    background-color: rgb(240, 246, 251);
+   
+    border-color:  rgb(240, 246, 251);
+    border: none; /* Remove default border */
+  box-shadow: none; /* Remove default shadow */
+
+  }
+  
+/* Add some spacing for the dropdown if needed */
+.dropdown-wrapper select {
+    width: 100%; /* Make the select box span the width of the container */
+  }
+  @media screen and (max-width: 1200px) {
+    .navbar-collapse {
+      margin-left: 0 !important; /* Adjust for large screens between 992px and 1200px */
+    }
+  }
+  
+  @media screen and (max-width: 992px) {
+    .text_navbar {
+      font-size: 16px;
+    }
+  
+    .logo_size {
+      max-width: 50%;
+      height: auto;
+    }
+  
+    .navbar-toggler {
+        position: absolute;
+        max-width: 60%;
+        right: 42px;
+        z-index: 1050; /* Ensure it's on top */
+      }
+    .navbar-collapse {
+      margin-left: 0 !important; /* Adjust for medium screens */
+    }
+    .navbar-toggler {
+        position: absolute;
+       
+        right: 32px;
+        z-index: 1050; /* Ensure it's on top */
+      }
+      /* DropdownWithIcon.css */
+    .dropdown-container {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .dropdown-wrapper {
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+      }
+      
+      .small-select {
+        /* Smaller select styling */
+        font-size: 12px;
+        background-color: rgb(240, 246, 251);
+        border-color:  rgb(240, 246, 251);
+      }
+      
+  }
+  
+  @media screen and (max-width: 600px) {
+    .text_navbar {
+      font-size: 14px;
+    }
+  
+    .logo_size {
+      max-width: 40%;
+      height: auto;
+    }
+  
+    .navbar-collapse {
+      margin-left: 0 !important; /* Adjust for small screens */
+    }
+    
+  .navbar-toggler {
+    position: absolute;
+   
+    right: 32px;
+    z-index: 1050; /* Ensure it's on top */
+  }
+  /* DropdownWithIcon.css */
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-wrapper {
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+  }
+  
+  .small-select {
+    /* Smaller select styling */
+    font-size: 12px;
+    background-color: rgb(240, 246, 251);
+    border-color:  rgb(240, 246, 251);
+  }
+  
+  }
+  
