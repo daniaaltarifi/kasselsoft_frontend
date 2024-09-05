@@ -1,10 +1,13 @@
 import React, { useRef, useEffect, useState } from 'react';
 import "../Css/navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function Navbar() {
   const navbarRef = useRef(null);
+  const location = useLocation();
+  const lang = location.pathname.split('/')[1] || 'en'; // Get the language from the path, default to 'en'
+
   const [isDropdownVisible, setDropdownVisible] = useState(false);
  
   const [selectedOption, setSelectedOption] = useState('en'); // Default to English
@@ -58,7 +61,7 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-light fixed-top" ref={navbarRef}>
       <div className="container-fluid ms-5 mt-4">
         {/* Logo on the left */}
-        <Link to="/" className="navbar-brand">
+        <Link to={`/${lang}`} className="navbar-brand">
           <img
             src={require("../assets/kassel_logo3.png")}
             alt="logo ba9ma"
@@ -107,7 +110,7 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/courses" className="nav-link text_navbar" onClick={handleLinkClick}>
+              <Link to={`/${lang}/services`}  className="nav-link text_navbar" onClick={handleLinkClick}>
                 Services
               </Link>
             </li>

@@ -13,18 +13,13 @@
   font-weight: 700;
   margin-bottom: 4vh;
 }
-.descr_home{
+/* .descr_home{
     font-size: 18px;
     line-height: 1.75rem;
     font-weight: 400;
     color: rgb(102 102 102);
-    text-align: center;
-}
-/* CarouselComponent.css */
-/* .slide{
-    position: relative;
-
 } */
+/* CarouselComponent.css */
 
 .slick-slide {
     position: relative;
