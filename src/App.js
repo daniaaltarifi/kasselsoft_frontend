@@ -32,11 +32,14 @@ const DirectionHandler = () => {
 
   return null;
 };
+
+import About from './Pages/About';
 function App() {
   
   return (
   
     <Router>
+       <Navbar />
       <div className="App">
           <RedirectToDefaultLanguage />
           <DirectionHandler /> {/* Handle direction change */}
@@ -44,6 +47,7 @@ function App() {
         <Routes>
           <Route path="/:lang" element={<Home />} />
           <Route path="/:lang/services" element={<Services />} />
+          <Route path="/About" element={<About />} />
         </Routes>
       </div>
     </Router>

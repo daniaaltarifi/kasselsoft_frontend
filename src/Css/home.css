@@ -11,29 +11,6 @@
   
   
 }
-/* Section Services Start */
-.services{
-  background: #f9f9f9;
-  margin-top: 100px;
-}
-.services .card{
-  box-shadow: rgba(0,0,0,0.1) 0px 4px 12px;
-  border: none;
-  cursor: pointer;
-}
-.services .card i{
-  font-size: 80px;
-  text-align: center;
-  color: #e09916;
-  margin-top: 20px;
-}
-.services .card .card-body h3{
-  font-weight: 600;
-}
-.services .card .card-body{
-  text-align: center;
-}
-/* Section Services End */
 
 .background_home .row {
   height: 100%;
