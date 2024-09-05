@@ -45,24 +45,23 @@
 .background_home .col-sm-12 {
   display: flex;
   justify-content: center;
-  /* align-items: center;    */
   flex-direction: column;
-  /* position: relative;      */
   padding-left: 10vh;
+  padding-right: 10vh;
+
 }
+
 .title_home {
   font-size: 2rem;
   margin: 0;
   color: rgb(60 102 171);
   font-weight: 700;
   z-index: 3;
-  text-align: left;
+  /* text-align: left; */
 }
 .big_title_home {
   font-size: 50px;
   z-index: 3;
-  text-align: left;
-
   font-weight: 700;
 }
 .descr_home {
@@ -72,7 +71,6 @@
   line-height: 1.7;
   font-weight: 400;
   margin-bottom: 25px;
-  text-align: left;
 }
 .learn_more_btn_home {
   z-index: 3;
@@ -98,6 +96,7 @@
   /* animation: moveImage 10s  linear infinite; */
   height: 62%;
   animation: jump 3s ease-in-out infinite;
+  z-index: 2;
 }
 @keyframes jump {
   0% {
@@ -279,6 +278,7 @@ transform: scale(1.08);
     height: auto;
     }
   .title_home {
+    margin-top: 100px;
     font-size: 1rem;
   }
   .big_title_home {
@@ -293,5 +293,10 @@ transform: scale(1.08);
   .view_more_btn_home{
     width: 100%;
 
+  }
+}
+@media screen and (max-width:1494px) {
+  .title_home {
+    margin-top: 150px;
   }
 }
