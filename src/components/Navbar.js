@@ -20,7 +20,7 @@ function Navbar() {
     switch (selectedOption) {
       case 'en':
         return 'bi bi-globe2'; // Icon for English
-      case 'fr':
+      case 'ar':
         return 'bi bi-globe'; // Icon for French
       default:
         return 'bi bi-globe2';
@@ -102,7 +102,7 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/Abuot" className="nav-link text_navbar" onClick={handleLinkClick}>
+              <Link to="/About" className="nav-link text_navbar" onClick={handleLinkClick}>
                 About
               </Link>
             </li>
