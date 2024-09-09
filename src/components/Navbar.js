@@ -100,12 +100,12 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/cardprice" className="nav-link text_navbar" onClick={handleLinkClick}>
+              <Link to={`${lang}/blogs`} className="nav-link text_navbar" onClick={handleLinkClick}>
                 Blog
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/About" className="nav-link text_navbar" onClick={handleLinkClick}>
+              <Link to={`${lang}/about`} className="nav-link text_navbar" onClick={handleLinkClick}>
                 About
               </Link>
             </li>

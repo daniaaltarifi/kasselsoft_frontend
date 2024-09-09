@@ -3,11 +3,12 @@ import '../Css/about.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Mainbackground from '../components/Mainbackground';
 function Abuot() {
+  const path= "about"
   return (
  <>
 
 
-<Mainbackground/>
+<Mainbackground path={path}/>
 
 
   {/* About Start */}
