@@ -4,6 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Mainbackground from "../components/Mainbackground";
 function Services() {
   const { lang } = useParams();
   const API_URL = process.env.REACT_APP_API_URL;
@@ -39,14 +40,15 @@ function Services() {
   }, [lang]);
   const title4 = titlesHome[3] || {};
   const title5 = titlesHome[4] || {};
-
+const path="services"
   return (
     <>
+    <Mainbackground path={path}/>
       <section className="marign_section" style={{ marginTop: "15vh" }}>
         <div className="container">
           <div className="row">
             {services.map((service) => (
-              <div className="col-lg-6 col-md-12 col-sm-12" data-aos="fade-up">
+              <div className="col-lg-6 col-md-12 col-sm-12" data-aos="fade-up"key={service.id}>
                 <div class="card card_services">
                   <div className="cont_img_services_card">
                     <img
@@ -73,20 +75,20 @@ function Services() {
       <section className="marign_section">
         <div className="container">
           <div className="text-center">
-            <p className="WHY_CHOOSE_US_home" data-aos="fade-left">
+            <p className="WHY_CHOOSE_US_home" data-aos="fade-right">
               {title4.subtitle || "Loading..."}
             </p>
-            <h3 className="we_help_you_home" data-aos="fade-left">
+            <h3 className="we_help_you_home" data-aos="fade-right">
               {title4.title || "Loading..."}{" "}
             </h3>
-            <p className="descr_home" data-aos="fade-left">
+            <p className="descr_home" data-aos="fade-right">
               {title4.description || "Loading..."}
             </p>
           </div>
 
           <div className="row">
             {howWeWork.map((how) => (
-              <div className="col-lg-4 col-md-6 col-sm-12">
+              <div className="col-lg-4 col-md-6 col-sm-12" key={how.id}>
                 <div class="card card_how_work">
                   <div className="cont_img_services_card">
                     <img
@@ -114,13 +116,13 @@ function Services() {
       <section className="marign_section">
         <div className="container">
           <div className="text-center">
-            <p className="WHY_CHOOSE_US_home" data-aos="fade-left">
+            <p className="WHY_CHOOSE_US_home" data-aos="fade-right">
               {title5.subtitle || "Loading..."}
             </p>
-            <h3 className="we_help_you_home" data-aos="fade-left">
+            <h3 className="we_help_you_home" data-aos="fade-right">
               {title5.title || "Loading..."}
             </h3>
-            <p className="descr_home" data-aos="fade-left">
+            <p className="descr_home" data-aos="fade-right">
               {title5.description || "Loading..."}
             </p>
           </div>

@@ -96,7 +96,7 @@ function LandingPage({ lang }) {
               className="slide"
             >
               {imgSliderHome.map((imgslide) => (
-                <div className="col-lg-4 col-md-6 col-sm-12">
+                <div className="col-lg-4 col-md-6 col-sm-12" key={imgslide.id}>
                   <img
                     src={`${API_URL}/${imgslide.img}`}
                     alt="pro5"
@@ -118,7 +118,7 @@ function LandingPage({ lang }) {
 
           <div className="row mt-5">
             {CareersHome.map((career) => (
-              <div className="col-lg-4 col-md-6 col-sm-12 mt-5 ">
+              <div className="col-lg-4 col-md-6 col-sm-12 mt-5 " key={career.id}>
                 <div className="box_home_counter">
                   <img
                     src={`${API_URL}/${career.icon}`}
@@ -143,7 +143,7 @@ function LandingPage({ lang }) {
           <div className="row mt-5">
             <Slider {...settings} style={{ overflow: "hidden" }}>
               {ExperienceHome.map((exp) => (
-                <div className="col-lg-4 col-md-6 col-sm-12">
+                <div className="col-lg-4 col-md-6 col-sm-12"key={exp.id}>
                   <div class="card card_slider_exp">
                     <img
                       src={`${API_URL}/${exp.img}`}

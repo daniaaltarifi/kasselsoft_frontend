@@ -4,9 +4,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home';
 import Navbar from './components/Navbar';
 import "./App.css";
-import Abuot from './Pages/Abuot';
+import About from './Pages/About.js';
 import Services from './Pages/Services';
 import { useNavigate,useLocation } from 'react-router-dom';
+import TermsAndCondition from './Pages/TermsAndCondition.js';
+import PrivacyPolicy from './Pages/PrivacyPolicy.js';
+import Blogs from './Pages/Blogs.js';
 // Component to redirect to default language
 const RedirectToDefaultLanguage = () => {
   const navigate = useNavigate();
@@ -33,13 +36,13 @@ const DirectionHandler = () => {
   return null;
 };
 
-import About from './Pages/About';
 function App() {
   
   return (
   
     <Router>
        <Navbar />
+       
       <div className="App">
           <RedirectToDefaultLanguage />
           <DirectionHandler /> {/* Handle direction change */}
@@ -47,7 +50,11 @@ function App() {
         <Routes>
           <Route path="/:lang" element={<Home />} />
           <Route path="/:lang/services" element={<Services />} />
-          <Route path="/About" element={<About />} />
+          <Route path="/:lang/about" element={<About />} />
+          <Route path="/:lang/blogs" element={<Blogs />} />
+
+          <Route path="/:lang/termsandcondition" element={<TermsAndCondition />} />
+          <Route path="/:lang/privacypolicy" element={<PrivacyPolicy />} />
         </Routes>
       </div>
     </Router>

@@ -212,7 +212,7 @@ function Home() {
       </div>
       <section className="margin_section background_whychooseus_home">
         {whychooseusHome.map((why) => (
-          <div className="container">
+          <div className="container" key={why.id}>
             <p className="WHY_CHOOSE_US_home" data-aos="fade-up-right">
               {why.subtitle}
             </p>
@@ -234,7 +234,7 @@ function Home() {
         <div className="container ">
           <div className="row mt-5">
             {cardHome.map((cardhome) => (
-              <div className="col-lg-3 col-md-6 col-sm-12">
+              <div className="col-lg-3 col-md-6 col-sm-12" key={cardhome.id}>
                 <div className="card card_services_home">
                   <div className="background_icon_home">
                     <img
