@@ -1,0 +1,30 @@
+.cont_bag_careers{
+    background-color: #bdcde9;
+    height: 50px;
+    width: 50px;
+    border-radius: 15px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.position_name_careers{
+   color:  rgb(80, 79, 79);
+    font-size: 20px;
+    font-weight: 500;
+padding-left: 2vh;
+}
+.btn_position_careers{
+    width:auto;
+    margin-top: 2vh;
+}
+.location_careers{
+    font-weight: 600;
+}
+.link_job_desc_careers{
+    color: #365486;
+    font-weight: 600;
+}
+.link_job_desc_careers:hover{
+color: #234d95;
+font-weight: 700;
+}

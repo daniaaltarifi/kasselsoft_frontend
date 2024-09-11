@@ -95,7 +95,7 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/blogs" className="nav-link text_navbar" onClick={handleLinkClick}>
+              <Link to={`${lang}/careers`} className="nav-link text_navbar" onClick={handleLinkClick}>
                 Career
               </Link>
             </li>

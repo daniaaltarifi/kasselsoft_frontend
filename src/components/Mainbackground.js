@@ -4,15 +4,16 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 function Mainbackground({path}) {
   const { lang } = useParams();
+  const API_URL = process.env.REACT_APP_API_URL;
+
 const [mainBackground,setMainBackground]=useState([])
   useEffect(()=>{
 const fetchMainBackground =async ()=>{
   try {
-    const response = await axios(`http://localhost:9090/backgroundpath/${lang}/${path}`);
+    const response = await axios(`${API_URL}/backgroundpath/${lang}/${path}`);
     const data = await response.data;
     console.log(data);
     setMainBackground(data)
-    console.log(`http://localhost:9090/backgroundpath/${lang}/${path}`)
   } catch (error) {
     console.error('Error fetching background', error);
     
