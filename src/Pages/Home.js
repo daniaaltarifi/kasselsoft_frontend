@@ -109,11 +109,7 @@ function Home() {
 
     fetchAllData();
   }, [lang]);
-  // const titles = homeServices.filter((item) => item.key_name === "title");
-  // const descriptions = homeServices.filter(
-  //   (item) => item.key_name === "description"
-  // );
-  // const image = homeServices.filter((item) => item.key_name === "img");
+ 
 
   return (
     <>
