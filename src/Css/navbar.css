@@ -54,11 +54,14 @@
   
       
   .navbar-toggler {
-    position: absolute;
+    
     background-color: rgb(240, 246, 251);
-    /* right: 32px; */
-    z-index: 1050; /* Ensure it's on top */
+   border: #365486;
+
+    
   }
+  
+
   /* DropdownWithIcon.css */
 .dropdown-container {
     position: relative;
@@ -110,12 +113,7 @@
       height: auto;
     }
   
-    .navbar-toggler {
-        position: absolute;
-        max-width: 60%;
-        /* right: 42px; */
-        z-index: 1050; /* Ensure it's on top */
-      }
+   
     .navbar-collapse {
       margin-left: 0 !important; /* Adjust for medium screens */
     }
@@ -155,12 +153,7 @@
       margin-left: 0 !important; /* Adjust for small screens */
     }
     
-  .navbar-toggler {
-    position: absolute;
-   
-    /* right: 32px; */
-    z-index: 1050; /* Ensure it's on top */
-  }
+  
   /* DropdownWithIcon.css */
 .dropdown-container {
     position: relative;
