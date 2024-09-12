@@ -63,6 +63,7 @@ function App() {
           <Route path="/:lang" element={<Home />} />
           <Route path="/:lang/services" element={<Services />} />
           <Route path="/:lang/about" element={<About />} />
+          <Route path="/:lang/blogs" element={<Blogs />} />
           <Route path="/:lang/about" element={<About />} />
           <Route path="/:lang/contact" element={<Contact />} />
           <Route path="/:lang/careers" element={<Careers />} />
