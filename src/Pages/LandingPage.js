@@ -62,7 +62,7 @@ function LandingPage({ lang }) {
         ]);
 
         setTitlesHome(titlesResponse.data);
-        setImgSliderHome(imgSliderResponse.data);
+        // setImgSliderHome(imgSliderResponse.data);
         setCareersHome(careersResponse.data);
         setExperienceHome(experienceResponse.data);
         

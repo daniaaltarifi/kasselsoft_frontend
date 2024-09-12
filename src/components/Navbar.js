@@ -1,23 +1,31 @@
 import React, { useRef, useEffect, useState } from 'react';
 import "../Css/navbar.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation,useHistory, useNavigate } from "react-router-dom";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function Navbar() {
   const navbarRef = useRef(null);
   const location = useLocation();
+  const navigate = useNavigate();
   const lang = location.pathname.split('/')[1] || 'en'; // Get the language from the path, default to 'en'
 
   const [isDropdownVisible, setDropdownVisible] = useState(false);
  
-  const [selectedOption, setSelectedOption] = useState('en'); // Default to English
+  const [selectedOption, setSelectedOption] = useState(lang); // Default to English
 
-  
 
   const handleSelection = (event) => {
-    setSelectedOption(event.target.value);
-    setDropdownVisible(false); // Hide dropdown after selection
+    const newLang = event.target.value;
+    setSelectedOption(newLang);
+    setDropdownVisible(false);
+    // Update the URL using React Router
+    navigate(`/${newLang}`);
   };
+
+  // const handleSelection = (event) => {
+  //   setSelectedOption(event.target.value);
+  //   setDropdownVisible(false); // Hide dropdown after selection
+  // };
 
   const getIconClass = () => {
     switch (selectedOption) {
@@ -126,8 +134,8 @@ function Navbar() {
     
         <div className="dropdown-wrapper">
           <select className="form-select small-select" value={selectedOption} onChange={handleSelection}>
-            <option value="en">En</option>
-            <option value="fr">Ar</option>
+            <option value="en">en</option>
+            <option value="ar">ar</option>
           </select>
         </div>
       

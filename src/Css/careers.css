@@ -1,5 +1,6 @@
+/* CARDS CAREERS */
 .cont_bag_careers{
-    background-color: #bdcde9;
+    background-color: #84a8ca;
     height: 50px;
     width: 50px;
     border-radius: 15px;
@@ -27,4 +28,82 @@ padding-left: 2vh;
 .link_job_desc_careers:hover{
 color: #234d95;
 font-weight: 700;
+}
+/* CARRERS FORM */
+
+
+.apply_now_carrers{
+    color: #fff;
+    text-align: center;
+}
+
+
+.apply-box{
+    max-width: 600px;
+    color: rgb(3, 3, 3);
+    background-color: #84a8ca;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 50px;
+    box-shadow: 5px 3px 10px rgba(10,10,10,0.6);
+    border-radius: 10px;
+}
+
+.web{
+    font-size: 25px;
+}
+
+.form-container{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 20px;
+}
+
+.form-control{
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+input,select,textarea{
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+}
+
+input:focus{
+    outline-color: rgba(64, 6, 212, 0.804) ;
+}
+
+textarea:focus{
+    outline-color: rgba(64, 6, 212, 0.804) ;
+}
+
+.cont_btn_apply_career{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.btn_apply_career{
+    width: auto;
+}
+
+.textarea-control{
+    grid-column: 1 / span 2;
+}
+
+.textarea-control textarea{
+    width: 100%;
+}
+
+@media(max-width:460px){
+    .textarea-control{
+        grid-column: 1 / span 1;
+    }
 }

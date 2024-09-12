@@ -20,20 +20,9 @@ function TermsAndCondition() {
     console.warn("Expected text to be a string, but got:", typeof text);
     return text; // or return an empty string, or some default value
   };
-  //   const [content, setContent] = useState("");
-
-  //   useEffect(() => {
-  //     // Fetch data from API
-  //     fetch("https://api.example.com/terms")
-  //       .then((response) => response.text())
-  //       .then((data) => {
-  //         // Format text
-  //         const formattedText = formatText(data);
-  //         setContent(formattedText);
-  //       })
-  //       .catch((error) => console.error("Error fetching terms:", error));
-  //   }, []);
+ 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchData = async () => {
       try {
         const [staticdataRes, blackDataRes, blueDataRes, contatcTermsRes] =
@@ -48,7 +37,6 @@ function TermsAndCondition() {
         setStaticData(staticdataRes.data);
         setBlackData(blackDataRes.data);
         setContactTerms(contatcTermsRes.data);
-        console.log("blue",blueDataRes.data);
         // Format each description
         const formattedBlueData = blueDataRes.data.map((item) => ({
           ...item, // Copy the existing item properties

@@ -12,6 +12,7 @@ import TermsAndCondition from './Pages/TermsAndCondition.js';
 import PrivacyPolicy from './Pages/PrivacyPolicy.js';
 import Blogs from './Pages/Blogs.js';
 import Careers from './Pages/Careers.js';
+import JobDescription from './Pages/JobDescription.js';
 
 // Component to redirect to default language
 const RedirectToDefaultLanguage = () => {
@@ -57,6 +58,7 @@ function App() {
           <Route path="/:lang/about" element={<About />} />
           <Route path="/:lang/blogs" element={<Blogs />} />
           <Route path="/:lang/careers" element={<Careers />} />
+          <Route path="/:lang/jobdescription/:id" element={<JobDescription />} />
 
           <Route path="/:lang/termsandcondition" element={<TermsAndCondition />} />
           <Route path="/:lang/privacypolicy" element={<PrivacyPolicy />} />
