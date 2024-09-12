@@ -1,22 +1,22 @@
 import React, { useRef, useEffect, useState } from "react";
 import "../Css/navbar.css";
-import { Link, useLocation, useHistory, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 function Navbar() {
   const navbarRef = useRef(null);
+  const navbarTogglerRef = useRef(null); // Reference to the toggle button
   const location = useLocation();
   const navigate = useNavigate();
   const lang = location.pathname.split("/")[1] || "en"; // Get the language from the path, default to 'en'
 
   const [isDropdownVisible, setDropdownVisible] = useState(false);
-
   const [selectedOption, setSelectedOption] = useState(lang); // Default to English
 
   const handleSelection = (event) => {
     const newLang = event.target.value;
     setSelectedOption(newLang);
-    setDropdownVisible(false);
+    setDropdownVisible(false); // Close dropdown when a language is selected
     // Update the URL using React Router
     navigate(`/${newLang}`);
   };
@@ -26,16 +26,22 @@ function Navbar() {
       case "en":
         return "bi bi-globe2"; // Icon for English
       case "ar":
-        return "bi bi-globe"; // Icon for French
+        return "bi bi-globe"; // Icon for Arabic
       default:
         return "bi bi-globe2";
     }
   };
 
+  // Function to handle link clicks and collapse the navbar
   const handleLinkClick = () => {
-    if (navbarRef.current.classList.contains("show")) {
-      navbarRef.current.classList.remove("show");
+    if (navbarTogglerRef.current) {
+      // Simulate a click on the toggle button to collapse the menu
+      navbarTogglerRef.current.click();
     }
+  };
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!isDropdownVisible);
   };
 
   // Add shadow on scroll
@@ -54,11 +60,6 @@ function Navbar() {
     };
   }, []);
 
-  // Function to toggle the dropdown visibility
-  const toggleDropdown = () => {
-    setDropdownVisible(!isDropdownVisible);
-  };
-
   return (
     <nav
       className="navbar navbar-expand-lg navbar-light fixed-top navbar-ltr"
@@ -76,13 +77,14 @@ function Navbar() {
 
         {/* Toggle button for small screens */}
         <button
-          className="navbar-toggler "
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          ref={navbarTogglerRef} // Reference to the toggle button
         >
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -91,14 +93,13 @@ function Navbar() {
         <div
           className="collapse navbar-collapse justify-content-center"
           id="navbarSupportedContent"
-          ref={navbarRef}
         >
           <ul className="navbar-nav">
             <li className="nav-item">
               <Link
                 to={`/${lang}`}
                 className="nav-link text_navbar"
-                onClick={handleLinkClick}
+                onClick={handleLinkClick} // Collapse menu on click
               >
                 {lang === "ar" ? "الرئيسية" : "Home"}
               </Link>
@@ -107,7 +108,7 @@ function Navbar() {
               <Link
                 to={`${lang}/about`}
                 className="nav-link text_navbar"
-                onClick={handleLinkClick}
+                onClick={handleLinkClick} // Collapse menu on click
               >
                 {lang === "ar" ? "حول" : "About"}
               </Link>
@@ -116,7 +117,7 @@ function Navbar() {
               <Link
                 to={`/${lang}/services`}
                 className="nav-link text_navbar"
-                onClick={handleLinkClick}
+                onClick={handleLinkClick} // Collapse menu on click
               >
                 {lang === "ar" ? "الخدمات" : "Services"}
               </Link>
@@ -125,7 +126,7 @@ function Navbar() {
               <Link
                 to={`${lang}/blogs`}
                 className="nav-link text_navbar"
-                onClick={handleLinkClick}
+                onClick={handleLinkClick} // Collapse menu on click
               >
                 {lang === "ar" ? "المدونة" : "Blog"}
               </Link>
@@ -134,17 +135,16 @@ function Navbar() {
               <Link
                 to={`${lang}/careers`}
                 className="nav-link text_navbar"
-                onClick={handleLinkClick}
+                onClick={handleLinkClick} // Collapse menu on click
               >
                 {lang === "ar" ? "الوظائف" : "Career"}
               </Link>
             </li>
-
             <li className="nav-item">
               <Link
-                to="/contact"
+                to={`${lang}/contact`}
                 className="nav-link text_navbar"
-                onClick={handleLinkClick}
+                onClick={handleLinkClick} // Collapse menu on click
               >
                 {lang === "ar" ? "اتصل بنا" : "Contact"}
               </Link>
