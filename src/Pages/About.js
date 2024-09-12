@@ -136,7 +136,7 @@ function About() {
 
       <div className="row" style={{ marginTop: 30 }}>
       {aboutTeme.map((aboutteam) => (
-        <div className="col-lg-3 col-md-6 col-sm-12">
+        <div className="col-lg-3 col-md-6 col-sm-12"key={aboutteam.id}>
         <div className="card">
           
                 <h1>{aboutteam.name}</h1>

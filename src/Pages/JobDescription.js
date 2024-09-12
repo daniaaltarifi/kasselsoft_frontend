@@ -40,7 +40,6 @@ function JobDescription() {
         setJobDescription(result);
         setResponsabilitiesList(itemsArray);
         setReqList(itemsArrayReq);
-        console.log("rrrrrrr", itemsArray);
         setBenefitList(itemsArrayBenefit);
       } catch (error) {
         console.error("Error fetching positions:", error);

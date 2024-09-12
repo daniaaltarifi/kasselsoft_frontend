@@ -42,7 +42,14 @@ const DirectionHandler = () => {
 };
 
 function App() {
-
+  // const originalConsoleError = console.error;
+  // console.error = (...args) => {
+  //   if (/Warning/.test(args[0])) {
+  //     return;
+  //   }
+  //   originalConsoleError.apply(console, args);
+  // };
+  
   return (
   
     <Router>
@@ -57,6 +64,7 @@ function App() {
           <Route path="/:lang/services" element={<Services />} />
           <Route path="/:lang/about" element={<About />} />
           <Route path="/:lang/blogs" element={<Blogs />} />
+          {/* <Route path="/:lang/blogs/:id" element={<Blogs />} /> */}
           <Route path="/:lang/careers" element={<Careers />} />
           <Route path="/:lang/jobdescription/:id" element={<JobDescription />} />
 

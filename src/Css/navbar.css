@@ -1,5 +1,7 @@
 /* src/Css/navbar.css */
-
+.navbar-ltr {
+  direction: ltr;
+}
 .navbar-light {
     font-family: "Cairo", sans-serif;
     background-color: rgb(240, 246, 251);
@@ -54,7 +56,7 @@
   .navbar-toggler {
     position: absolute;
     background-color: rgb(240, 246, 251);
-    right: 32px;
+    /* right: 32px; */
     z-index: 1050; /* Ensure it's on top */
   }
   /* DropdownWithIcon.css */
@@ -111,18 +113,13 @@
     .navbar-toggler {
         position: absolute;
         max-width: 60%;
-        right: 42px;
+        /* right: 42px; */
         z-index: 1050; /* Ensure it's on top */
       }
     .navbar-collapse {
       margin-left: 0 !important; /* Adjust for medium screens */
     }
-    .navbar-toggler {
-        position: absolute;
-       
-        right: 32px;
-        z-index: 1050; /* Ensure it's on top */
-      }
+ 
       /* DropdownWithIcon.css */
     .dropdown-container {
         position: relative;
@@ -161,7 +158,7 @@
   .navbar-toggler {
     position: absolute;
    
-    right: 32px;
+    /* right: 32px; */
     z-index: 1050; /* Ensure it's on top */
   }
   /* DropdownWithIcon.css */

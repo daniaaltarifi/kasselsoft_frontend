@@ -26,7 +26,9 @@ function Careers() {
   const [titlesHome, setTitlesHome] = useState([]);
 
   useEffect(() => {
-    AOS.init({ duration: 1200 });
+    // AOS.init({ duration: 1200 });
+    AOS.init();
+    AOS.refresh();
     window.scrollTo(0, 0);
 
     const fetchPositions = async () => {
@@ -39,8 +41,6 @@ function Careers() {
     };
 
     fetchPositions();
-  }, []);
-  useEffect(() => {
     const fetchData = async () => {
       try {
         const [titlesResponse, careersResponse] = await Promise.all([
@@ -50,7 +50,6 @@ function Careers() {
 
         setTitlesHome(titlesResponse.data);
         setCareers(careersResponse.data);
-        console.log(titlesResponse.data);
       } catch (err) {
         console.error("Error fetching data:", err);
       }
@@ -58,6 +57,7 @@ function Careers() {
 
     fetchData();
   }, [lang]);
+
   const handlePost = async () => {
     if (
       !first_name ||
@@ -134,32 +134,36 @@ function Careers() {
     setCv(file);
   };
   const title = titlesHome[5] || {};
+  const aosAnimation = lang === 'ar' ? 'fade-left' : 'fade-right';
 
   return (
     <>
       <Mainbackground path={path} />
       <div className="container">
         <div>
-          <p className="WHY_CHOOSE_US_home" data-aos="fade-up-right">
+          <p className="WHY_CHOOSE_US_home" data-aos={aosAnimation}
+          >
             {title.subtitle || "Loading..."}
           </p>
-          <h3 className="we_help_you_home" data-aos="fade-up-right">
+          <h3 className="we_help_you_home" data-aos={aosAnimation}
+          >
             {title.title || "Loading..."}
           </h3>
-          <p className="why_choose_email" data-aos="fade-up-right">
+          <p className="why_choose_email" data-aos={aosAnimation}
+          >
             {title.description || "Loading..."}
           </p>
         </div>
 
         <div className="row">
           {careers.map((career) => (
-            <div className="col-lg-6 col-md-12 col-sm-12">
+            <div className="col-lg-6 col-md-12 col-sm-12"key={career.id}>
               <div className="card p-4">
                 <div className="d-flex justify-content-between mt-4">
                   <div className="d-flex flex-wrap">
                     <div className="cont_bag_careers">
                       <i
-                        class="fa-solid fa-bag-shopping fa-2xl"
+                        className="fa-solid fa-bag-shopping fa-2xl"
                         style={{ color: "#000000" }}
                       ></i>
                     </div>
@@ -220,7 +224,7 @@ function Careers() {
                   <button
                     type="button"
                     className="learn_more_btn_home "
-                    data-aos="fade-right"
+                    data-aos={aosAnimation}
                   >
                     {lang === "ar"
                       ? `قدم الان ` // RTL text
@@ -232,8 +236,8 @@ function Careers() {
           ))}
         </div>
       </div>
-      <div class="container">
-        <div class="apply-box">
+      <div className="container">
+        <div className="apply-box">
           <h1 className="apply_now_carrers">
             {lang === "ar"
               ? `قدم الان  ` // RTL text
@@ -241,8 +245,8 @@ function Careers() {
           </h1>
 
           <form action="">
-            <div class="form-container">
-              <div class="form-control">
+            <div className="form-container">
+              <div className="form-control">
                 <label for="first_name">
                   {lang === "ar"
                     ? `الاسم الاول ` // RTL text
@@ -257,12 +261,12 @@ function Careers() {
                       ? `ادخل الاسم الاول ` // RTL text
                       : `Enter First Name `
                   }
-                  autocomplete="off"
+                  autoComplete="off"
                   value={first_name}
                   onChange={(e) => setFirst_name(e.target.value)}
                 />
               </div>
-              <div class="form-control">
+              <div className="form-control">
                 <label for="last_name">
                   {lang === "ar" ? `الاسم الاخير ` : `Last Name`}
                 </label>
@@ -276,7 +280,7 @@ function Careers() {
                   onChange={(e) => setLast_name(e.target.value)}
                 />
               </div>
-              <div class="form-control">
+              <div className="form-control">
                 <label for="email">
                   {lang === "ar" ? `البريد الالكتروني ` : `Email `}
                 </label>
@@ -293,7 +297,7 @@ function Careers() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <div class="form-control">
+              <div className="form-control">
                 <label for="job-role">
                   {lang === "ar" ? `نوع الوظيفة` : `Position  `}
                 </label>
@@ -316,7 +320,7 @@ function Careers() {
                   ))}
                 </select>
               </div>
-              <div class="textarea-control">
+              <div className="textarea-control">
                 <label for="address">
                   {lang === "ar" ? `الوصف الوظيفي` : `Cover Letter  `}
                 </label>
@@ -334,7 +338,7 @@ function Careers() {
                   onChange={(e) => setCover_letter(e.target.value)}
                 ></textarea>
               </div>
-              <div class="form-control">
+              <div className="form-control">
                 <label for="phone">
                   {lang === "ar" ? `رقم الهاتف` : `Phone  `}
                 </label>
@@ -350,7 +354,7 @@ function Careers() {
                 />
               </div>
 
-              <div class="form-control">
+              <div className="form-control">
                 <label for="upload">
                   {lang === "ar" ? `السيرة الذاتية` : `Upload your CV  `}
                 </label>
@@ -362,7 +366,7 @@ function Careers() {
                 />
               </div>
             </div>
-            <div class="button-container cont_btn_apply_career ">
+            <div className="button-container cont_btn_apply_career ">
               <button
                 type="button"
                 className="learn_more_btn_home  btn_apply_career"

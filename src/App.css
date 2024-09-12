@@ -39,8 +39,16 @@
 /* App.css */
 /* App.css or a specific CSS file */
 
-/* Styles for screens that are at least 768px wide */
-@media (min-width: 768px) {
+.ltr {
+  direction: ltr;
+  text-align: left;
+}
+
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+/* @media (min-width: 368px) {
   .ltr {
     direction: ltr;
     text-align: left;
@@ -50,5 +58,5 @@
     direction: rtl;
     text-align: right;
   }
-}
+} */
 

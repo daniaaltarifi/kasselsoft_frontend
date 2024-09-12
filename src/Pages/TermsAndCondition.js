@@ -91,7 +91,7 @@ function TermsAndCondition() {
               </div>
             </div>
             {contactTerms.map((contact) => (
-              <div>
+              <div key={contact.id}>
                 <p className="title_terms"> {contact.title}</p>
                 <p className="descr_terms">{contact.description}</p>
                 <p className="descr_terms">
@@ -113,13 +113,13 @@ function TermsAndCondition() {
         </div>
       ))}
        {blackData.map((black) => (
-              <div>
+              <div key={black.id}>
                 <p className="affiliate_terms">{black.title}</p>
                 <p className="affiliate_descr">{black.description}</p>
               </div>
             ))}
             {blueData.map((blue) => (
-              <div>
+              <div key={blue.id}>
                 <p className="title_terms">{blue.title}</p>
                 <p
                   className="descr_terms"

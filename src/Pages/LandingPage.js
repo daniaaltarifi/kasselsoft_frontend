@@ -8,7 +8,7 @@ import axios from "axios";
 
 function LandingPage({ lang }) {
   const API_URL = process.env.REACT_APP_API_URL;
-  // const { lang } = useParams();
+  const aosAnimation = lang === 'ar' ? 'fade-left' : 'fade-right';
   const [titlesHome, setTitlesHome] = useState([]);
   const [imgSliderHome, setImgSliderHome] = useState([]);
   const [CareersHome, setCareersHome] = useState([]);
@@ -62,7 +62,7 @@ function LandingPage({ lang }) {
         ]);
 
         setTitlesHome(titlesResponse.data);
-        // setImgSliderHome(imgSliderResponse.data);
+        setImgSliderHome(imgSliderResponse.data);
         setCareersHome(careersResponse.data);
         setExperienceHome(experienceResponse.data);
         
