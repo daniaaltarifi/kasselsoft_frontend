@@ -36,7 +36,6 @@ function PrivacyPolicy() {
 
         setStaticData(staticdataRes.data);
         setBlackData(blackDataRes.data);
-        console.log("black",blackDataRes.data);
 
         // Format each description
         const formattedBlueData = blueDataRes.data.map((item) => ({
@@ -46,7 +45,6 @@ function PrivacyPolicy() {
 
         setBlueData(formattedBlueData);
         setContactTerms(contatcTermsRes.data);
-        console.log("blue",contatcTermsRes.data);
 
       } catch (err) {
         console.error("Error fetching data:", err);
@@ -62,7 +60,7 @@ function PrivacyPolicy() {
       <div className="container" >
 
       {staticData.map((data) => (
-        <div>
+        <div key={data.id}>
 
           <p className="WHY_CHOOSE_US_home">{data.main_subtitle}</p>
           <h3 className="we_help_you_home">{data.main_title}</h3>
@@ -102,7 +100,7 @@ function PrivacyPolicy() {
               </div>
             </div>
             {contactTerms.map((contact) => (
-              <div>
+              <div key={contact.id}>
                 <p className="title_terms"> {contact.title}</p>
                 <p className="descr_terms">{contact.description}</p>
                 <p className="descr_terms">
@@ -127,13 +125,13 @@ function PrivacyPolicy() {
 
       ))}
        {blackData.map((black) => (
-              <div>
+              <div key={black.id}>
                 <p className="affiliate_terms">{black.title}</p>
                 <p className="affiliate_descr">{black.description}</p>
               </div>
             ))}
              {blueData.map((blue) => (
-              <div>
+              <div key={blue.id}>
                 <p className="title_terms">{blue.title}</p>
                 <p
                   className="descr_terms"

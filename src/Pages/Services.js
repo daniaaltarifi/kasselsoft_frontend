@@ -8,16 +8,20 @@ import Mainbackground from "../components/Mainbackground";
 function Services() {
   const { lang } = useParams();
   const API_URL = process.env.REACT_APP_API_URL;
+  const aosAnimation = lang === 'ar' ? 'fade-left' : 'fade-right';
+
   const [services, setServices] = useState([]);
   const [titlesHome, setTitlesHome] = useState([]);
   const [howWeWork, setHowWeWork] = useState([]);
   const [industryImg, setIndustryImg] = useState([]);
 
   useEffect(() => {
-    AOS.init({ duration: 1200 });
+    // AOS.init({ duration: 1200 });
     window.scrollTo(0, 0);
   }, []);
   useEffect(() => {
+    AOS.init();
+    AOS.refresh();
     const fetchData = async () => {
       try {
         const [servicesRes, titlesResponse, howweworkRes, industryimgRes] =
@@ -31,7 +35,6 @@ function Services() {
         setTitlesHome(titlesResponse.data);
         setHowWeWork(howweworkRes.data);
         setIndustryImg(industryimgRes.data);
-        console.log(industryimgRes.data);
       } catch (err) {
         console.error("Error fetching data:", err);
       }
@@ -75,13 +78,13 @@ const path="services"
       <section className="marign_section">
         <div className="container">
           <div className="text-center">
-            <p className="WHY_CHOOSE_US_home" data-aos="fade-right">
+            <p className="WHY_CHOOSE_US_home"  data-aos={aosAnimation}>
               {title4.subtitle || "Loading..."}
             </p>
-            <h3 className="we_help_you_home" data-aos="fade-right">
+            <h3 className="we_help_you_home"  data-aos={aosAnimation}>
               {title4.title || "Loading..."}{" "}
             </h3>
-            <p className="descr_home" data-aos="fade-right">
+            <p className="descr_home"  data-aos={aosAnimation}>
               {title4.description || "Loading..."}
             </p>
           </div>
@@ -116,13 +119,13 @@ const path="services"
       <section className="marign_section">
         <div className="container">
           <div className="text-center">
-            <p className="WHY_CHOOSE_US_home" data-aos="fade-right">
+            <p className="WHY_CHOOSE_US_home" data-aos={aosAnimation}>
               {title5.subtitle || "Loading..."}
             </p>
-            <h3 className="we_help_you_home" data-aos="fade-right">
+            <h3 className="we_help_you_home"  data-aos={aosAnimation}>
               {title5.title || "Loading..."}
             </h3>
-            <p className="descr_home" data-aos="fade-right">
+            <p className="descr_home"  data-aos={aosAnimation}>
               {title5.description || "Loading..."}
             </p>
           </div>

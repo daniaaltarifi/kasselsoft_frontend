@@ -12,7 +12,6 @@ const fetchMainBackground =async ()=>{
   try {
     const response = await axios(`${API_URL}/backgroundpath/${lang}/${path}`);
     const data = await response.data;
-    console.log(data);
     setMainBackground(data)
   } catch (error) {
     console.error('Error fetching background', error);

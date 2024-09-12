@@ -7,7 +7,6 @@ function Footer() {
   const API_URL = process.env.REACT_APP_API_URL;
   const location = useLocation();
   const lang = location.pathname.split("/")[1] || "en";
-  console.log("language: " + lang);
   const [staticFooter, setStaticFooter] = useState([]);
   const [contactFooter, setcontactFooter] = useState([]);
   useEffect(() => {
@@ -24,7 +23,6 @@ function Footer() {
         setcontactFooter(contactFooterRes.data);
       } catch (err) {
         console.error("Error fetching data:", err);
-        console.log("foo", `${API_URL}/footer/${lang}`);
 
       }
     };
@@ -86,7 +84,7 @@ function Footer() {
                 <hr className="w-100 clearfix d-md-none" />
                 {/* Grid column */}
                 {staticFooter.map((mainfooter) => (
-                  <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                  <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3"key={mainfooter.id}>
                     <h6 className="text-uppercase mb-4 font-weight-bold">
                       {mainfooter.support}
                     </h6>
@@ -112,7 +110,7 @@ function Footer() {
                 <hr className="w-100 clearfix d-md-none" />
                 {/* Grid column */}
                 {staticFooter.map((mainfooter) => (
-                  <div className="col-md-6 col-lg-2 col-xl-2 mx-auto mt-3">
+                  <div className="col-md-6 col-lg-2 col-xl-2 mx-auto mt-3" key={mainfooter.id}>
                     <h6 className="text-uppercase mb-4 font-weight-bold">
                       {mainfooter.company}
                     </h6>
@@ -150,7 +148,7 @@ function Footer() {
                   key={contactFooter.id}
                 >
                   {contactFooter.map((contact) => (
-                    <div>
+                    <div key={contact.id}>
                       <h6 className="text-uppercase mb-4 font-weight-bold">
                         {contact.title}
                       </h6>
@@ -188,42 +186,42 @@ function Footer() {
                     role="button"
                     style={{ color: "rgb(60 102 171)", fontSize: "25px" }}
                   >
-                    <i class="bi bi-facebook"></i>
+                    <i className="bi bi-facebook"></i>
                   </a>
                   {/* Twitter */}
                   <a
-                    href="https://www.facebook.com/people/kasselsoft/61555183182719/?mibextid=PlNXYD"
+                    href="https://www.linkedin.com/company/kasselsoft/"
                     className="btn btn-floating m-1"
                     target="blank"
                     style={{ color: "rgb(60 102 171)", fontSize: "25px" }}
                   >
-                    <i class="bi bi-linkedin"></i>
+                    <i className="bi bi-linkedin"></i>
                   </a>
                   {/* Google */}
-                  <a
+                  {/* <a
                     href="https://www.facebook.com/people/kasselsoft/61555183182719/?mibextid=PlNXYD"
                     className="btn btn-floating m-1"
                     target="blank"
                     style={{ color: "rgb(60 102 171)", fontSize: "25px" }}
                   >
-                    <i class="bi bi-google"></i>
-                  </a>
+                    <i className="bi bi-google"></i>
+                  </a> */}
                   {/* Instagram */}
                   <a
-                    href="https://www.facebook.com/people/kasselsoft/61555183182719/?mibextid=PlNXYD"
+                    href="https://www.instagram.com/_kassel_/?igsh=MWRjcHk5MGJtYWVmcw%3D%3D"
                     className="btn btn-floating m-1"
                     target="blank"
                     style={{ color: "rgb(60 102 171)", fontSize: "25px" }}
                   >
-                    <i class="bi bi-instagram"></i>
+                    <i className="bi bi-instagram"></i>
                   </a>
                   <a
-                    href="https://www.facebook.com/people/kasselsoft/61555183182719/?mibextid=PlNXYD"
+                    href="https://l.instagram.com/?u=https%3A%2F%2Fwa.me%2Fmessage%2F74Q6F22FDGNYN1&e=AT1WUZrPRUTSfX-I4FkVPpz8WjFo_-7OTsd_9xELwzOc6aD_sVn5FW5r58PAEhW24zoXvNtrI9adFb-ArE0j1L08t30mHgha"
                     className="btn btn-floating m-1"
                     target="blank"
                     style={{ color: "rgb(60 102 171)", fontSize: "25px" }}
                   >
-                    <i class="bi bi-whatsapp"></i>
+                    <i className="bi bi-whatsapp"></i>
                   </a>
                 </div>
                 {/* Grid column */}

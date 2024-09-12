@@ -8,6 +8,8 @@ import { useParams } from "react-router-dom";
 function Home() {
   const API_URL = process.env.REACT_APP_API_URL;
   const { lang } = useParams();
+  const aosAnimation = lang === 'ar' ? 'fade-left' : 'fade-right';
+
   const [homeData, setHomeData] = useState([]);
   const [homeServices, setHomeServices] = useState([]);
   const [whychooseusHome, setWhychooseusHome] = useState([]);
@@ -15,12 +17,14 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   useEffect(() => {
-    AOS.init({ duration: 1200 });
+    // AOS.init({ duration: 1200 });
     window.scrollTo(0, 0);
 
   }, []);
   
   useEffect(() => {
+    AOS.init();
+    AOS.refresh();
     const fetchAllData = async () => {
       setLoading(true);
       try {
@@ -33,7 +37,6 @@ function Home() {
           ]);
 
         setHomeData(translationsRes.data);
-        console.log(translationsRes.data);
         setHomeServices(homeServicesRes.data);
         setWhychooseusHome(whychooseusRes.data);
         setCardHome(cardHomeRes.data);
@@ -54,7 +57,7 @@ function Home() {
       <div className="container-fluid  background_home" >
         <div className="row">
           {homeData.map((mainhome) => (
-            <div className="col-lg-6 col-md-6 col-sm-12">
+            <div className="col-lg-6 col-md-6 col-sm-12"key={mainhome.id}>
               <img
                 src={require("../assets/home3-shape1.png")}
                 alt="shape1"
@@ -71,21 +74,21 @@ function Home() {
                 className="home3-shape3 img-fluid"
               />
 
-              <p className="title_home" data-aos="fade-right">
+              <p className="title_home"  data-aos={aosAnimation}>
                 {" "}
                 {mainhome.subtitle}
               </p>
-              <h1 className="big_title_home" data-aos="fade-right">
+              <h1 className="big_title_home"  data-aos={aosAnimation}>
                 {mainhome.title}
               </h1>
-              <p className="descr_home" data-aos="fade-right">
+              <p className="descr_home" data-aos={aosAnimation}>
                 {mainhome.description}
               </p>
 
               <button
                 type="button"
                 className="learn_more_btn_home "
-                data-aos="fade-right"
+                data-aos={aosAnimation}
               >
                 {mainhome.button}
               </button>
@@ -93,7 +96,7 @@ function Home() {
           ))}
 
           {homeData.map((mainhome) => (
-            <div className="col-lg-6 col-md-6 col-sm-12 ">
+            <div className="col-lg-6 col-md-6 col-sm-12 "key={mainhome.id}>
               <div className="d-flex justify-content-around">
                 <img
                   src={require("../assets/home3-round-shape1.png")}
@@ -147,19 +150,19 @@ function Home() {
       <section className="margin_section background_whychooseus_home">
         {whychooseusHome.map((why) => (
           <div className="container" key={why.id}>
-            <p className="WHY_CHOOSE_US_home" data-aos="fade-up-right">
+            <p className="WHY_CHOOSE_US_home"  data-aos={aosAnimation}>
               {why.subtitle}
             </p>
-            <h3 className="we_help_you_home" data-aos="fade-up-right">
+            <h3 className="we_help_you_home"  data-aos={aosAnimation}>
               {why.title}
             </h3>
-            <p className="why_choose_descr" data-aos="fade-up-right">
+            <p className="why_choose_descr"  data-aos={aosAnimation}>
               {why.description}
             </p>
             <button
               type="button"
               className="view_more_btn_home "
-              data-aos="fade-up-right"
+              data-aos={aosAnimation}
             >
               {why.button}{" "}
             </button>
