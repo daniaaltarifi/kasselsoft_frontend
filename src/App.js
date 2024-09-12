@@ -13,7 +13,7 @@ import PrivacyPolicy from './Pages/PrivacyPolicy.js';
 import Blogs from './Pages/Blogs.js';
 import Careers from './Pages/Careers.js';
 import JobDescription from './Pages/JobDescription.js';
-
+import Contact from './Pages/Contact.js';
 // Component to redirect to default language
 const RedirectToDefaultLanguage = () => {
   const navigate = useNavigate();
@@ -63,8 +63,8 @@ function App() {
           <Route path="/:lang" element={<Home />} />
           <Route path="/:lang/services" element={<Services />} />
           <Route path="/:lang/about" element={<About />} />
-          <Route path="/:lang/blogs" element={<Blogs />} />
-          {/* <Route path="/:lang/blogs/:id" element={<Blogs />} /> */}
+          <Route path="/:lang/about" element={<About />} />
+          <Route path="/:lang/contact" element={<Contact />} />
           <Route path="/:lang/careers" element={<Careers />} />
           <Route path="/:lang/jobdescription/:id" element={<JobDescription />} />
 
