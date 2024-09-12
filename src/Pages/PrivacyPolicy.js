@@ -22,6 +22,8 @@ function PrivacyPolicy() {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const fetchData = async () => {
       try {
         const [staticdataRes, blackDataRes, blueDataRes, contatcTermsRes] =

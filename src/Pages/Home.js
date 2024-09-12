@@ -16,72 +16,10 @@ function Home() {
   const [error, setError] = useState(null);
   useEffect(() => {
     AOS.init({ duration: 1200 });
+    window.scrollTo(0, 0);
+
   }, []);
-  // useEffect(() => {
-  //   async function fetchTranslations() {
-  //     try {
-  //       const response = await axios.get(`${API_URL}/home/${lang}`);
-  //       const data = response.data;
-  //       // Convert array to an object for easier access
-  //       const translationsObject = data.reduce((acc, item) => {
-  //         acc[item.key_name] = item.value;
-  //         return acc;
-  //       }, {});
-  //       setHomeData(translationsObject);
-  //     } catch (err) {
-  //       console.error("Error fetching translations:", err);
-  //       setError("Failed to fetch translations");
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
-  //   async function fetchHomeServices() {
-  //     try {
-  //       const response = await axios.get(
-  //         `${API_URL}/homeservices/${lang}`
-  //       );
-  //       const data = response.data;
-  //       setHomeServices(data);
-  //     } catch (err) {
-  //       console.error("Error fetching translations:", err);
-  //       setError("Failed to fetch translations");
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
-  //   async function fetchWhychooseus() {
-  //     try {
-  //       const response = await axios.get(
-  //         `${API_URL}/homewhychooseus/${lang}`
-  //       );
-  //       const data = response.data;
-  //       setWhychooseusHome(data);
-  //     } catch (err) {
-  //       console.error("Error fetching translations:", err);
-  //       setError("Failed to fetch translations");
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
-  //   async function fetchCardHome() {
-  //     try {
-  //       const response = await axios.get(
-  //         `${API_URL}/cardhome/${lang}`
-  //       );
-  //       const data = response.data;
-  //       setCardHome(data);
-  //     } catch (err) {
-  //       console.error("Error fetching translations:", err);
-  //       setError("Failed to fetch translations");
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
-  //   fetchTranslations();
-  //   fetchHomeServices();
-  //   fetchWhychooseus();
-  //   fetchCardHome()
-  // }, [lang]);
+  
   useEffect(() => {
     const fetchAllData = async () => {
       setLoading(true);
