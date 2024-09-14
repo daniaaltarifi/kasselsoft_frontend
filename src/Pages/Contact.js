@@ -29,7 +29,7 @@ function Contect() {
     useEffect(() => {
       const fetchAllData = async () => {
         try {
-          const contactFooterRes = await axios.get(`http://localhost:9090/contactfooter/${lang}`);
+          const contactFooterRes = await axios.get(`${API_URL}/contactfooter/${lang}`);
           setContactFooter(contactFooterRes.data);
         } catch (err) {
           console.error("Error fetching data:", err);
@@ -54,7 +54,7 @@ function Contect() {
         e.preventDefault();
 
         try {
-            const response = await fetch(`http://localhost:9090/contactForm/add`, {
+            const response = await fetch(`${API_URL}/contactForm/add`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

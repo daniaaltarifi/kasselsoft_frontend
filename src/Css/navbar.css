@@ -1,5 +1,5 @@
 /* src/Css/navbar.css */
-.navbar-ltr {
+.navbar-ltr{
   direction: ltr;
 }
 .navbar-light {
@@ -47,9 +47,10 @@
   .navbar-toggler {
     
     background-color: rgb(240, 246, 251);
+  border: #365486;
    border: #365486;
 
-    
+
   }
   
 
@@ -108,7 +109,7 @@
     .navbar-collapse {
       margin-left: 0 !important; /* Adjust for medium screens */
     }
- 
+   
       /* DropdownWithIcon.css */
     .dropdown-container {
         position: relative;
@@ -165,4 +166,3 @@
   }
   
   }
-  

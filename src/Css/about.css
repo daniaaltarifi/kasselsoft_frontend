@@ -52,11 +52,11 @@
 }
 
 /* Scattered Icons */
-/* .scattered-icons {
+.scattered-icons {
   position: relative;
   width: 100%;
-  height: 100%;
-} */
+  height: 50%;
+}
 
 .scattered-icons i {
   position: absolute;
