@@ -7,16 +7,7 @@
     background-color: rgb(240, 246, 251);
   }
   
-  .purple_btn {
-    background-color: rgb(240, 246, 251);
-    color: rgb(214, 43, 43);
-    border-radius: 15px;
-    margin-left: 5px;
-  }
   
-  .purple_btn:hover {
-    background-color: #a767ac;
-  }
   
   .text_navbar {
     font-weight: 700;
