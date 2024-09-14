@@ -23,7 +23,8 @@ padding-left: 2vh;
 }
 .link_job_desc_careers{
     color: #365486;
-    font-weight: 600;
+    font-weight: 700;
+ font-size: 17px;
 }
 .link_job_desc_careers:hover{
 color: #234d95;
@@ -101,7 +102,11 @@ textarea:focus{
 .textarea-control textarea{
     width: 100%;
 }
-
+.cont_cv {
+    display: flex;
+    justify-content: center;
+    grid-column: 1 / span 2; /* Adjust as needed */
+}
 @media(max-width:460px){
     .textarea-control{
         grid-column: 1 / span 1;

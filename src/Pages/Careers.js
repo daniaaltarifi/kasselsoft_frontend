@@ -19,9 +19,10 @@ function Careers() {
   const [last_name, setLast_name] = useState("");
   const [email, setEmail] = useState("");
   const [position_id, setPosition_id] = useState("");
-  const [cover_letter, setCover_letter] = useState("");
+  const [exp, setexp] = useState("");
+  const [skills, setSkills] = useState("");
   const [phone, setPhone] = useState("");
-  const [cv, setCv] = useState("");
+  const [cv, setCv] = useState(null);
   const [careers, setCareers] = useState([]);
   const [titlesHome, setTitlesHome] = useState([]);
 
@@ -64,7 +65,8 @@ function Careers() {
       !last_name ||
       !email ||
       !position_id ||
-      !cover_letter ||
+      !exp ||
+      !skills ||
       !phone ||
       !cv
     ) {
@@ -84,7 +86,8 @@ function Careers() {
       formData.append("last_name", last_name);
       formData.append("email", email);
       formData.append("position_id", position_id);
-      formData.append("cover_letter", cover_letter);
+      formData.append("exp", exp);
+      formData.append("skills", skills);
       formData.append("phone", phone);
       formData.append("cv", cv);
 
@@ -106,9 +109,10 @@ function Careers() {
       setLast_name("");
       setEmail("");
       setPosition_id("");
-      setCover_letter("");
+      setexp("");
+      setSkills("");
       setPhone("");
-      setCv("");
+      setCv(null);
     } catch (error) {
       console.log(`Error fetching post data ${error}`);
     }
@@ -221,15 +225,7 @@ function Careers() {
  `}
                     </Link>
                   </div>
-                  <button
-                    type="button"
-                    className="learn_more_btn_home "
-                    data-aos={aosAnimation}
-                  >
-                    {lang === "ar"
-                      ? `قدم الان ` // RTL text
-                      : ` Apply`}
-                  </button>
+                 
                 </div>
               </div>
             </div>
@@ -320,25 +316,26 @@ function Careers() {
                   ))}
                 </select>
               </div>
-              <div className="textarea-control">
-                <label for="address">
-                  {lang === "ar" ? `الوصف الوظيفي` : `Cover Letter  `}
+             
+              <div className="form-control">
+                <label for="exp">
+                {lang === "ar" ? `سنوات الخبرة` : `Experience years `}
                 </label>
-                <textarea
-                  name="address"
-                  id="address"
-                  cols="50"
-                  rows="4"
+                <input
+                  type="text"
+                  id="exp"
+                  name="exp"
                   placeholder={
                     lang === "ar"
-                      ? `ادخل الوصف الوظيفي`
-                      : `Enter your cover letter `
-                  }
-                  value={cover_letter}
-                  onChange={(e) => setCover_letter(e.target.value)}
-                ></textarea>
+                    ? `ادخل سنوات الخبرة`
+                    : `Enter your Experience years `
+                }
+                  value={exp}
+                  onChange={(e) => setexp(e.target.value)}
+                />
               </div>
-              <div className="form-control">
+              
+                <div className="form-control">
                 <label for="phone">
                   {lang === "ar" ? `رقم الهاتف` : `Phone  `}
                 </label>
@@ -353,8 +350,28 @@ function Careers() {
                   onChange={(e) => setPhone(e.target.value)}
                 />
               </div>
+           <div className="textarea-control">
+                <label for="exp">
+                  {lang === "ar" ? `المهارات` : `Skills `}
+                </label>
+                <textarea
+                  name="exp"
+                  id="exp"
+                  cols="50"
+                  rows="4"
+                  placeholder={
+                    lang === "ar"
+                      ? `ادخل المهارات`
+                      : `Enter your Skills `
+                  }
+                  value={skills}
+                  onChange={(e) => setSkills(e.target.value)}
+                ></textarea>
+              </div>
+            
+<div className="cont_cv">
 
-              <div className="form-control">
+              <div className="form-control ">
                 <label for="upload">
                   {lang === "ar" ? `السيرة الذاتية` : `Upload your CV  `}
                 </label>
@@ -365,6 +382,8 @@ function Careers() {
                   onChange={handleCv}
                 />
               </div>
+</div>
+
             </div>
             <div className="button-container cont_btn_apply_career ">
               <button
