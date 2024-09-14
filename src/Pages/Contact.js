@@ -110,14 +110,20 @@ function Contect() {
   {contactFooter.length > 0 && (
   <>
   {/* Display all matching locations */}
-  <div className="contact-item mt-2">
-    <div className="icon-text">
-      <i className="bi bi-geo-alt" />
-      <h3 className="ms-2">
-        {lang === "ar" ? "الموقع" : "Location:"}
-      </h3>
-    </div>
-    <p className="mt-1 ms-4">
+{/* Display all matching locations */}
+<div className="contact-item mt-5 d-flex align-items-center">
+  <div className="icon-circle d-flex align-items-center justify-content-center">
+    <img
+      src={require("../assets/placeholder-icon.webp")}
+      alt="Location Icon"
+      className="icon-image"
+    />
+  </div>
+  <div className="ms-3">
+    <h3 className="mb-3">
+      {lang === "ar" ? "الموقع" : "Location:"}
+    </h3>
+    <p className="mb-0">
       {contactFooter
         .filter(item => /^[a-zA-Z\s]+$/.test(item.subtitle)) // Find all locations with letters only
         .map((location, index) => (
@@ -138,16 +144,23 @@ function Contect() {
       )}
     </p>
   </div>
+</div>
 
-  {/* Display all matching phone numbers */}
-  <div className="contact-item mt-2">
-    <div className="icon-text">
-      <i className="bi bi-telephone-forward" />
-      <h3 className="ms-2">
-        {lang === "ar" ? "الرقم" : "Phone:"}
-      </h3>
-    </div>
-    <p className="mt-1 ms-4">
+
+{/* Display all matching phone numbers */}
+<div className="contact-item mt-5 d-flex align-items-center">
+  <div className="icon-circle d-flex align-items-center justify-content-center ">
+    <img
+      src={require("../assets/call-icon.png")}
+      alt="Phone Icon "
+      className="icon-image "
+    />
+  </div>
+  <div className="ms-3">
+    <h3 className="mb-4">
+      {lang === "ar" ? "الرقم" : "Phone:"}
+    </h3>
+    <p className="mb-0">
       {contactFooter
         .filter(item => /^[\d\s]+$/.test(item.subtitle)) // Find all phone numbers with only digits and spaces
         .map((phone, index) => (
@@ -160,16 +173,22 @@ function Contect() {
       {!contactFooter.some(item => /^[\d\s]+$/.test(item.subtitle)) && '+962 790025554'}
     </p>
   </div>
+</div>
 
-  {/* Display all matching emails */}
-  <div className="contact-item mt-2">
-    <div className="icon-text">
-      <i className="bi bi-envelope" />
-      <h3 className="ms-2">
-        {lang === "ar" ? "الايميل" : "Email:"}
-      </h3>
-    </div>
-    <p className="mt-1 ms-4">
+{/* Display all matching emails */}
+<div className="contact-item mt-5 d-flex align-items-center">
+  <div className="icon-circle d-flex align-items-center justify-content-center  ">
+    <img
+      src={require("../assets/letter-icon.webp")}
+      alt="Email Icon"
+      className="icon-image"
+    />
+  </div>
+  <div className="ms-3">
+    <h3 className="mb-3">
+      {lang === "ar" ? "الايميل" : "Email:"}
+    </h3>
+    <p className="mb-0">
       {contactFooter
         .filter(item => item.subtitle.includes('@')) // Find all emails containing '@'
         .map((email, index) => (
@@ -182,6 +201,8 @@ function Contect() {
       {!contactFooter.some(item => item.subtitle.includes('@')) && 'contactform@gmail.com'}
     </p>
   </div>
+</div>
+
 </>
 
  
