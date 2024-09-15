@@ -3,20 +3,7 @@
   direction: rtl;
 }
 
-/* Ensure the logo and toggle button are positioned correctly */
-.navbar-rtl .navbar-brand {
-  order: 2; /* Logo on the right for RTL */
-}
-.navbar-rtl .navbar-toggler {
-  order: 1; /* Toggle button on the left for RTL */
-}
 
-.navbar-ltr .navbar-brand {
-  order: 1; /* Logo on the left for LTR */
-}
-.navbar-ltr .navbar-toggler {
-  order: 2; /* Toggle button on the right for LTR */
-}
 
 
 .navbar-light {
@@ -131,7 +118,20 @@
       max-width: 50%;
       height: auto;
     }
-    
+    /* Ensure the logo and toggle button are positioned correctly */
+.navbar-rtl .navbar-brand {
+  order: 2; /* Logo on the right for RTL */
+}
+.navbar-rtl .navbar-toggler {
+  order: 1; /* Toggle button on the left for RTL */
+}
+
+.navbar-ltr .navbar-brand {
+  order: 1; /* Logo on the left for LTR */
+}
+.navbar-ltr .navbar-toggler {
+  order: 2; /* Toggle button on the right for LTR */
+}
    
     .navbar-collapse {
       margin-left: 0 !important; /* Adjust for medium screens */
@@ -175,7 +175,20 @@
       margin-left: 0 !important; /* Adjust for small screens */
     }
     
-  
+  /* Ensure the logo and toggle button are positioned correctly */
+.navbar-rtl .navbar-brand {
+  order: 2; /* Logo on the right for RTL */
+}
+.navbar-rtl .navbar-toggler {
+  order: 1; /* Toggle button on the left for RTL */
+}
+
+.navbar-ltr .navbar-brand {
+  order: 1; /* Logo on the left for LTR */
+}
+.navbar-ltr .navbar-toggler {
+  order: 2; /* Toggle button on the right for LTR */
+}
   /* DropdownWithIcon.css */
 .dropdown-container {
     position: relative;

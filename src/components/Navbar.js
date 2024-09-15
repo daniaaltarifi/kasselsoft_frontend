@@ -65,19 +65,19 @@ function Navbar() {
       className="navbar navbar-expand-lg navbar-light fixed-top navbar-ltr"
       ref={navbarRef}
     >
-      <div className="container-fluid mt-4">
+      <div className="container-fluid ms-5 mt-4">
           {/* Logo on the left */}
 <Link to={`/${lang}`} className="navbar-brand">
           <img
             src={require("../assets/kassel_logo3.png")}
             alt="logo ba9ma"
-            className="logo_size img_icon_navbar mt-2"
+            className="logo_size img_icon_navbar"
           />
         </Link>
 
         {/*   for small screens */}
         <button
-      className="navbar-toggler order-lg-2 mt-2"
+      className="navbar-toggler order-lg-2"
       type="button"
       data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent"
