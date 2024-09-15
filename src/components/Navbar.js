@@ -65,27 +65,27 @@ function Navbar() {
       className="navbar navbar-expand-lg navbar-light fixed-top navbar-ltr"
       ref={navbarRef}
     >
-      <div className="container-fluid ms-5 mt-4">
-        {/* Logo on the left */}
-        <Link to={`/${lang}`} className="navbar-brand">
+      <div className="container-fluid mt-4">
+          {/* Logo on the left */}
+<Link to={`/${lang}`} className="navbar-brand">
           <img
             src={require("../assets/kassel_logo3.png")}
             alt="logo ba9ma"
-            className="logo_size img_icon_navbar"
+            className="logo_size img_icon_navbar mt-2"
           />
         </Link>
 
-        {/* Toggle button for small screens */}
+        {/*   for small screens */}
         <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          ref={navbarTogglerRef} // Reference to the toggle button
-        >
+      className="navbar-toggler order-lg-2 mt-2"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      ref={navbarTogglerRef}
+    >
           <span className="navbar-toggler-icon"></span>
         </button>
 
@@ -167,7 +167,9 @@ function Navbar() {
             </div>
           </div>
         </div>
+       
       </div>
+     
     </nav>
   );
 }
