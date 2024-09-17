@@ -61,10 +61,10 @@
 }
 
 .img_card_how_work{
-    height: 200px;
+    height: 170px;
     width: 65%;
-    object-fit: contain;
-    border-radius:55px;
+    object-fit: cover;
+    /* border-radius:55px; */
 }
 .text_how_work_card{
     font-size: 18px;

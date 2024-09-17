@@ -89,17 +89,14 @@ function LandingPage({ lang }) {
           <h3 className="we_help_you_home">{title1.title || "Loading..."}</h3>
           <p className="descr_home">{title1.description || "Loading..."}</p>
 
-          <div className="row mt-5">
-            <Slider
-              {...settings}
-              style={{ overflow: "hidden" }}
-              className="slide"
-            >
-              {imgSliderHome.map((imgslide) => (
-                <div className="col-lg-4 col-md-6 col-sm-12" key={imgslide.id}>
+        {/* First Slider */}
+        <div className="row mt-5">
+            <Slider {...settings} style={{ overflow: "hidden" }} className="slide">
+              {imgSliderHome.map((img, index) => (
+                <div className="col-lg-4 col-md-6 col-sm-12" key={img.id}>
                   <img
-                    src={`${API_URL}/${imgslide.img}`}
-                    alt="pro5"
+                    src={`${API_URL}/${img.img}`}
+                    alt={`slider-img-${index}`}
                     className="slider_img_home"
                   />
                 </div>
