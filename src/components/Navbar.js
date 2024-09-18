@@ -67,27 +67,26 @@ function Navbar() {
       <div className="container-fluid ms-5 mt-4">
         {/* Logo on the left */}
         <div className="toggle_sm ">
+          <Link to={`/${lang}`} className="navbar-brand">
+            <img
+              src={require("../assets/kassel_logo3.png")}
+              alt="logo ba9ma"
+              className="logo_size img_icon_navbar"
+            />
+          </Link>
 
-        <Link to={`/${lang}`} className="navbar-brand">
-          <img
-            src={require("../assets/kassel_logo3.png")}
-            alt="logo ba9ma"
-            className="logo_size img_icon_navbar"
-          />
-        </Link>
-
-        {/* Toggle button for small screens */}
-        <button
-          className="navbar-toggler "
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+          {/* Toggle button for small screens */}
+          <button
+            className="navbar-toggler "
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
         </div>
 
         {/* Navigation items */}
@@ -145,7 +144,7 @@ function Navbar() {
 
             <li className="nav-item">
               <Link
-                to="/contact"
+                to={`${lang}/contact`}
                 className="nav-link text_navbar"
                 onClick={handleLinkClick}
               >

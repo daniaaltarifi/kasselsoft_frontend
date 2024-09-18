@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
-import Mainbackground from "../components/Mainbackground";
 import "../Css/blogs.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
 import axios from "axios";
+import Mainbackground from "../components/Mainbackground";
+
 function Blogs() {
   const path = "blogs";
   const { lang } = useParams();
-  const [selectedBlog, setSelectedBlog] = useState(null); // State to track the selected blog
-
   const API_URL = process.env.REACT_APP_API_URL;
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
   const [blogs, setBlogs] = useState([]);
   const [tags, setTags] = useState([]);
-  const [selectedTagId, setSelectedTagId] = useState(null); // State to track the selected tag ID
-  const [filteredBlogs, setFilteredBlogs] = useState([]);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const [lastThreeBlogs, setLastThreeBlogs] = useState([]);
+  const [selectedTagId, setSelectedTagId] = useState(null);
+  const [dynamicBlog, setDynamicBlog] = useState([]);
 
-  const handleBlogClick = (blog) => {
-    setSelectedBlog(blog);
-  };
+  const navigate = useNavigate();
+  const location = useLocation();
+  // const tag_name = location.state?.tag_name;
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchBlog = async () => {
       try {
         const [blogsRes, tagsResponse] = await Promise.all([
           axios.get(`${API_URL}/blogs/${lang}`),
@@ -29,156 +29,215 @@ function Blogs() {
         ]);
         setBlogs(blogsRes.data);
         setTags(tagsResponse.data);
-        setFilteredBlogs(blogsRes.data); // Initially show all blogs
+        // setFilteredBlogs(blogsRes.data); // Initially show all blogs
 
-        console.log(blogsRes.data);
+        console.log(tagsResponse.data);
       } catch (err) {
         console.error("Error fetching data:", err);
       }
     };
-    fetchData();
+    fetchBlog();
   }, [lang]);
-  useEffect(() => {
-    if (selectedTagId !== null) {
-      // Filter blogs based on the selected tag ID
-      const filtered = blogs.filter((blog) => blog.tag_id === selectedTagId);
-      setFilteredBlogs(filtered);
-    } else {
-      // If no tag is selected, show all blogs
-      setFilteredBlogs(blogs);
-    }
-  }, [selectedTagId, blogs]);
-  const handleTagClick = (tagId) => {
-    setSelectedTagId(tagId);
+  // const fetchTags = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       "https://ba9maacademy.kasselsoft.online/tag/uniquetag"
+  //     );
+  //     const tags = response.data;
+  //     setTags(tags); // Assuming setTags is a function to update your state
+  //   } catch (error) {
+  //     console.error("Failed to fetch tags:", error);
+  //   }
+  // };
+
+  const fetchLastThreeBlogs = async () => {
+    const response = await axios.get(
+      "https://ba9maacademy.kasselsoft.online/blog/lastthree"
+    );
+    const blogsData = response.data;
+    const approvedBlogs = blogsData.filter(
+      (blog) => blog.action === "approved"
+    );
+    setLastThreeBlogs(approvedBlogs);
   };
+  // const fetchDynamicBlog = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       "https://ba9maacademy.kasselsoft.online/dynamicblog/"
+  //     );
+  //     const data = response.data;
+  //     setDynamicBlog(data);
+  //   } catch (error) {
+  //     console.log(`Error getting data from frontend: ${error}`);
+  //   }
+  // };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    // fetchDynamicBlog();
+    // fetchTags();
+    fetchLastThreeBlogs();
+  }, []);
+
+
+  // const handleTagClick = async (tag_name) => {
+  //   try {
+  //     const response = await axios.get(
+  //       `https://ba9maacademy.kasselsoft.online/tag/blogbytag/${tag_name}`
+  //     );
+  //     const blogs = response.data;
+  //     const mappedBlogs = blogs.map((tag) => ({
+  //       id: tag.blog_id, // Adjust as needed
+  //       title: tag.title,
+  //       author: tag.author,
+  //       descr: tag.descr,
+  //       img: tag.img,
+  //       tag_name: tag.tag_name,
+  //     }));
+  //     setBlogs(mappedBlogs);
+  //   } catch (error) {
+  //     console.error("Failed to fetch blogs:", error);
+  //   }
+  // };
+  const [displayBlogs, setDisplayBlogs] = useState([]);
+
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
+  // Number of blogs per slide
+  const blogsPerSlide = 5;
+
+  // Calculate total number of slides
+  // const totalSlides = Math.ceil(displayBlogs.length / blogsPerSlide);
+
+  // Update the displayBlogs state based on filters
+  useEffect(() => {
+    let filteredBlogs = [];
+console.log("tag",selectedTagId)
+    if (selectedTagId !== null) {
+      filteredBlogs = blogs.filter((blog) => blog.tag_id === selectedTagId);
+    } else {
+      filteredBlogs = blogs;
+    }
+
+    setDisplayBlogs(filteredBlogs);
+    setCurrentSlideIndex(0); // Reset to the first slide when filtering changes
+  }, [blogs, selectedTagId]);
+ 
+
+  // Calculate which blogs to display based on current slide index
+  const startIndex = currentSlideIndex * blogsPerSlide;
+  const endIndex = startIndex + blogsPerSlide;
+  // const visibleBlogs = displayBlogs.slice(startIndex, endIndex);
 
   return (
     <>
       <Mainbackground path={path} />
+
+      {/* End header */}
       <section className="margin_section">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 col-md-12 col-sm-12">
-              {selectedBlog ? (
-                // Display selected blog details
-                <div>
-                  <img
-                    src={`${API_URL}/${selectedBlog.img}`}
-                    alt={selectedBlog.title}
-                    className="main_img_blog"
-                  />
-                  <p className="main_title_blogs">{selectedBlog.title}</p>
-                  <p>{selectedBlog.description}</p>
-                </div>
-              ) : (
-                // Display default content
-                <div>
-                  <img
-                    src={require("../assets/work2.webp")}
-                    alt="pro5"
-                    className="main_img_blog"
-                  />
-                  <p className="main_title_blogs">
-                    Ai streamline repetitive tasks
-                  </p>
-                  <p>
-                    crafting innovative websites and apps, seamlessly blending
-                    creativity with functionality. Clients trust Kassel for
-                    top-notch digital solutions, a testament to their industry
-                    prowess and dedication!
-                  </p>
-                </div>
-              )}
+        <div className="container ">
+          <div className="row ">
+          <div className="col-lg-8 col-md-12 col-sm-12 col_blog">
+  {displayBlogs.length === 0 ? ( // Check if there are no blogs
+    <div className="col-lg-12 col-md-12 col-sm-12 text-center">
+      <p>No Blogs Found</p>
+    </div>
+  ) : (
+    displayBlogs.map((blog, index) => (
+      <Link
+        to={`/blogdetails/${blog.id}`}
+        style={{ textDecoration: "none" }}
+        key={index} // Move key here to avoid warnings
+      >
+        <div className="card mb-3 card_cont_blog">
+          <div className="row g-0">
+            <div className="col-lg-4 col-md-4 col-sm-12 img_col_blogs">
+              <img
+                src={`${API_URL}/${blog.img}`}
+                className="img-fluid img_blog"
+                alt="..."
+              />
             </div>
-
-            <div className="col-lg-4 col-md-12 col-sm-12">
-              <p className="popular_title_blog">
-                Popular Posts{" "}
-                <i
-                  className="fa-solid fa-angles-right"
-                  style={{ color: "#000000" }}
-                ></i>{" "}
-              </p>
-              <div className="scrollable-container">
-                {filteredBlogs.length > 0 ? (
-                  filteredBlogs.map((blog) => (
-                    <div className="d-flex flex-wrap mt-2" key={blog.id}>
-                      <div className="col-lg-3 col-md-4 col-sm-12">
-                        <img
-                          src={`${API_URL}/${blog.img}`}
-                          alt="pro5"
-                          className="popular_img_blog"
-                        />
-                      </div>
-                      <div className="col-lg-9 col-md-4 col-sm-12 col_popular_blogs ps-3">
-                        <button
-                          onClick={() => handleBlogClick(blog)}
-                          style={{
-                            textDecoration: "none",
-                            color: "#000",
-                            border: "none",
-                            background: "none",
-                            cursor: "pointer",
-                          }}
-                        >
-                          <p className="popular_link_blogs">{blog.title}</p>
-                          <span>{blog.updated_at}</span>
-                        </button>
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  <div className="scrollable-container">
-                    {blogs.map((blog) => (
-                      <div className="d-flex flex-wrap mt-2" key={blog.id}>
-                        <div className="col-lg-3 col-md-4 col-sm-12">
-                          <img
-                            src={`${API_URL}/${blog.img}`}
-                            alt="pro5"
-                            className="popular_img_blog"
-                          />
-                        </div>
-                        <div className="col-lg-9 col-md-4 col-sm-12 col_popular_blogs ps-3">
-                          <button
-                            onClick={() => handleBlogClick(blog)}
-                            style={{
-                              textDecoration: "none",
-                              color: "#000",
-                              border: "none",
-                              background: "none",
-                              cursor: "pointer",
-                            }}
-                          >
-                            <p className="popular_link_blogs">{blog.title}</p>
-                            <span>{blog.updated_at}</span>
-                          </button>
-                        </div>
-                      </div>
-                    ))}
+            <div className="col-lg-8 col-md-8 col-sm-12">
+              <div className="card-body card_body_blog">
+                <div className="cont_info_blog">
+                  <div>
+                    <p className="card-title blog_title">{blog.title}</p>
                   </div>
-                )}
+                  <div className="d-flex">
+                    <i
+                      className="fa-solid fa-clock card_icon ms-2 mt-1"
+                      style={{ color: "#4c74b7" }}
+                    ></i>
+                    <p className="details_blogs_card ">{blog.updated_at}</p>
+                  </div>
+                </div>
               </div>
+              <p className="card-text desc_blog ">{blog.description}</p>
+            </div>
+          </div>
+        </div>
+      </Link>
+    ))
+  )}
+</div>
 
-              <p className="popular_title_blog second_popular_title">
-                Popular Posts{" "}
+            <div className="col-lg-3 col-md-12 col-sm-12 ">
+              <p className="popular_title_blog ">
+               {lang ==='ar' ? "المقالات الاخيرة" :"Recent Blogs"}
+               {lang === 'ar' ? 
                 <i
-                  className="fa-solid fa-angles-right"
+                  className="fa-solid fa-angles-left  "
                   style={{ color: "#000000" }}
-                ></i>{" "}
+                ></i> :
+                <i
+                className="fa-solid fa-angles-right ms-2"
+                style={{ color: "#000000" }}
+              ></i>
+               }
               </p>
-              <div className="d-flex flex-wrap justify-content-center gap-2">
-                {tags.map((tag) => (
-                  <div key={tag.id}>
-                    <button
-                      type="button"
-                      className="btn btn_blogs"
-                      onClick={() => handleTagClick(tag.id)} // Pass tag ID to the handler
-                    >
-                      {tag.tag_name}{" "}
-                    </button>
+              {lastThreeBlogs.map((lastthreeblogs) => (
+                <Link
+                  to={`/blogdetails/${lastthreeblogs.id}`}
+                  style={{ textDecoration: "none", color: "#000" }}
+                >
+                  <div className="categ_lastblog_cont">
+                    <img
+                      src={
+                        `https://ba9maacademy.kasselsoft.online/` +
+                        lastthreeblogs.img
+                      }
+                      alt=""
+                      className="img-fluid img_last_blog"
+                    />
+                    <p className="desc_last_blog">{lastthreeblogs.title}</p>
                   </div>
-                ))}
-
+                </Link>
+              ))}
+                <p className="popular_title_blog ">
+               {lang ==='ar' ? "التاغات" :" Tags"}
+               {lang === 'ar' ? 
+                <i
+                  className="fa-solid fa-angles-left  "
+                  style={{ color: "#000000" }}
+                ></i> :
+                <i
+                className="fa-solid fa-angles-right ms-2"
+                style={{ color: "#000000" }}
+              ></i>
+               }
+              </p>
+              <div className="tags_btn_cont">
+                {tags.map((tag) => (
+          <div key={tag.id}>
+            <button
+              type="button"
+              className="btn btn-outline-secondary mb-1"
+              onClick={() => setSelectedTagId(tag.id)} // Use setter function here
+            >
+              {tag.tag_name}
+            </button>
+          </div>
+        ))}
               </div>
             </div>
           </div>
