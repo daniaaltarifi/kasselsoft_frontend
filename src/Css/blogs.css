@@ -348,7 +348,11 @@ object-fit: contain;
     opacity: 0;
     cursor: pointer;
   }
-  
+  .blogdetails_img{
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+  }
   @media screen and (max-width: 768px) {
     .title_header_blog {
       font-size: 35px;

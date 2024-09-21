@@ -25,7 +25,14 @@ function Careers() {
   const [cv, setCv] = useState(null);
   const [careers, setCareers] = useState([]);
   const [titlesHome, setTitlesHome] = useState([]);
+  const [skillsList, setSkillsList] = useState([]);
 
+  const handleAddSkill = () => {
+    if (skills.trim() !== "") {
+      setSkillsList([...skillsList, skills]);
+      setSkills(""); // Clear the input after adding
+    }
+  };
   useEffect(() => {
     // AOS.init({ duration: 1200 });
     AOS.init();
@@ -66,7 +73,6 @@ function Careers() {
       !email ||
       !position_id ||
       !exp ||
-      !skills ||
       !phone ||
       !cv
     ) {
@@ -87,7 +93,7 @@ function Careers() {
       formData.append("email", email);
       formData.append("position_id", position_id);
       formData.append("exp", exp);
-      formData.append("skills", skills);
+      formData.append("skills", skillsList);
       formData.append("phone", phone);
       formData.append("cv", cv);
 
@@ -111,6 +117,7 @@ function Careers() {
       setPosition_id("");
       setexp("");
       setSkills("");
+      setSkillsList([])
       setPhone("");
       setCv(null);
     } catch (error) {
@@ -138,30 +145,27 @@ function Careers() {
     setCv(file);
   };
   const title = titlesHome[5] || {};
-  const aosAnimation = lang === 'ar' ? 'fade-left' : 'fade-right';
+  const aosAnimation = lang === "ar" ? "fade-left" : "fade-right";
 
   return (
     <>
       <Mainbackground path={path} />
       <div className="container">
         <div>
-          <p className="WHY_CHOOSE_US_home" data-aos={aosAnimation}
-          >
+          <p className="WHY_CHOOSE_US_home" data-aos={aosAnimation}>
             {title.subtitle || "Loading..."}
           </p>
-          <h3 className="we_help_you_home" data-aos={aosAnimation}
-          >
+          <h3 className="we_help_you_home" data-aos={aosAnimation}>
             {title.title || "Loading..."}
           </h3>
-          <p className="why_choose_email" data-aos={aosAnimation}
-          >
+          <p className="why_choose_email" data-aos={aosAnimation}>
             {title.description || "Loading..."}
           </p>
         </div>
 
         <div className="row">
           {careers.map((career) => (
-            <div className="col-lg-6 col-md-12 col-sm-12"key={career.id}>
+            <div className="col-lg-6 col-md-12 col-sm-12" key={career.id}>
               <div className="card p-4">
                 <div className="d-flex justify-content-between mt-4">
                   <div className="d-flex flex-wrap">
@@ -225,7 +229,6 @@ function Careers() {
  `}
                     </Link>
                   </div>
-                 
                 </div>
               </div>
             </div>
@@ -316,10 +319,10 @@ function Careers() {
                   ))}
                 </select>
               </div>
-             
+
               <div className="form-control">
                 <label for="exp">
-                {lang === "ar" ? `سنوات الخبرة` : `Experience years `}
+                  {lang === "ar" ? `سنوات الخبرة` : `Experience years `}
                 </label>
                 <input
                   type="text"
@@ -327,15 +330,15 @@ function Careers() {
                   name="exp"
                   placeholder={
                     lang === "ar"
-                    ? `ادخل سنوات الخبرة`
-                    : `Enter your Experience years `
-                }
+                      ? `ادخل سنوات الخبرة`
+                      : `Enter your Experience years `
+                  }
                   value={exp}
                   onChange={(e) => setexp(e.target.value)}
                 />
               </div>
-              
-                <div className="form-control">
+
+              <div className="form-control">
                 <label for="phone">
                   {lang === "ar" ? `رقم الهاتف` : `Phone  `}
                 </label>
@@ -350,40 +353,48 @@ function Careers() {
                   onChange={(e) => setPhone(e.target.value)}
                 />
               </div>
-           <div className="textarea-control">
-                <label for="exp">
-                  {lang === "ar" ? `المهارات` : `Skills `}
+              <div className="form-control">
+                <label htmlFor="exp">
+                  {lang === "ar" ? `المهارات` : `Skills`}
                 </label>
-                <textarea
+                <input
                   name="exp"
                   id="exp"
                   cols="50"
                   rows="4"
                   placeholder={
-                    lang === "ar"
-                      ? `ادخل المهارات`
-                      : `Enter your Skills `
+                    lang === "ar" ? `ادخل المهارات` : `Enter your Skills`
                   }
                   value={skills}
                   onChange={(e) => setSkills(e.target.value)}
-                ></textarea>
-              </div>
-            
-<div className="cont_cv">
-
-              <div className="form-control ">
-                <label for="upload">
-                  {lang === "ar" ? `السيرة الذاتية` : `Upload your CV  `}
-                </label>
-                <input
-                  type="file"
-                  id="upload"
-                  name="upload"
-                  onChange={handleCv}
                 />
               </div>
-</div>
-
+                <button type="button" onClick={handleAddSkill} className="add_skill_btn_career" >
+                 <p>
+                 {lang === "ar" ? `أضف المهارة` : `Add Skill`}
+                  </p> 
+                </button>
+              <div className="skills-display">
+                {/* <h3>{lang === "ar" ? `المهارات المضافة` : `Added Skills`}</h3> */}
+                <ul>
+                  {skillsList.map((skill, index) => (
+                    <li key={index}>{skill}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="cont_cv">
+                <div className="form-control ">
+                  <label for="upload">
+                    {lang === "ar" ? `السيرة الذاتية` : `Upload your CV  `}
+                  </label>
+                  <input
+                    type="file"
+                    id="upload"
+                    name="upload"
+                    onChange={handleCv}
+                  />
+                </div>
+              </div>
             </div>
             <div className="button-container cont_btn_apply_career ">
               <button

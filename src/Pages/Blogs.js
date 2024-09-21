@@ -50,16 +50,16 @@ function Blogs() {
   //   }
   // };
 
-  const fetchLastThreeBlogs = async () => {
-    const response = await axios.get(
-      "https://ba9maacademy.kasselsoft.online/blog/lastthree"
-    );
-    const blogsData = response.data;
-    const approvedBlogs = blogsData.filter(
-      (blog) => blog.action === "approved"
-    );
-    setLastThreeBlogs(approvedBlogs);
-  };
+  // const fetchLastThreeBlogs = async () => {
+  //   const response = await axios.get(
+  //     "https://ba9maacademy.kasselsoft.online/blog/lastthree"
+  //   );
+  //   const blogsData = response.data;
+  //   const approvedBlogs = blogsData.filter(
+  //     (blog) => blog.action === "approved"
+  //   );
+  //   setLastThreeBlogs(approvedBlogs);
+  // };
   // const fetchDynamicBlog = async () => {
   //   try {
   //     const response = await axios.get(
@@ -75,7 +75,7 @@ function Blogs() {
     window.scrollTo(0, 0);
     // fetchDynamicBlog();
     // fetchTags();
-    fetchLastThreeBlogs();
+    // fetchLastThreeBlogs();
   }, []);
 
 
@@ -144,7 +144,7 @@ console.log("tag",selectedTagId)
   ) : (
     displayBlogs.map((blog, index) => (
       <Link
-        to={`/blogdetails/${blog.id}`}
+        to={`/${lang}/blogdetails/${blog.id}`}
         style={{ textDecoration: "none" }}
         key={index} // Move key here to avoid warnings
       >
@@ -152,7 +152,9 @@ console.log("tag",selectedTagId)
           <div className="row g-0">
             <div className="col-lg-4 col-md-4 col-sm-12 img_col_blogs">
               <img
-                src={`${API_URL}/${blog.img}`}
+                // src={`${API_URL}/${blog.img}`}
+                src={require('../assets/about-us-img1.webp')}
+
                 className="img-fluid img_blog"
                 alt="..."
               />
@@ -172,7 +174,7 @@ console.log("tag",selectedTagId)
                   </div>
                 </div>
               </div>
-              <p className="card-text desc_blog ">{blog.description}</p>
+              <p className="card-text desc_blog ">{blog.main_description}</p>
             </div>
           </div>
         </div>
@@ -195,17 +197,19 @@ console.log("tag",selectedTagId)
               ></i>
                }
               </p>
-              {lastThreeBlogs.map((lastthreeblogs) => (
+              {displayBlogs.map((lastthreeblogs) => (
                 <Link
                   to={`/blogdetails/${lastthreeblogs.id}`}
                   style={{ textDecoration: "none", color: "#000" }}
                 >
                   <div className="categ_lastblog_cont">
                     <img
-                      src={
-                        `https://ba9maacademy.kasselsoft.online/` +
-                        lastthreeblogs.img
-                      }
+                      // src={
+                      //   `https://ba9maacademy.kasselsoft.online/` +
+                      //   lastthreeblogs.img
+                      // }
+                src={require('../assets/about-us-img1.webp')}
+
                       alt=""
                       className="img-fluid img_last_blog"
                     />
