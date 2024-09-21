@@ -12,7 +12,7 @@ function BlogDetails() {
     const fetchBlog = async () => {
       try {
         const [blogsRes] = await Promise.all([
-          axios.get(`${API_URL}/blogs/${lang}/getbyid/${id}`),
+          axios.get(`${API_URL}/blogs/${lang}/getbyidfront/${id}`),
         ]);
         setBlogs(blogsRes.data);
         console.log(blogsRes.data);
@@ -28,60 +28,56 @@ function BlogDetails() {
       <section className="margin_section">
         <div className="container text-center">
           <div className="row">
-            {blogs.map((blogdetails) => (
-                <div>
+          {Array.isArray(blogs) ? (
+  blogs.map((blogdetails) => (
+    <div key={blogdetails.id}> {/* Add a key */}
+      <div className="d-flex flex-wrap">
+        <div className="col-lg-6 col-md-6 col-sm-12 col_interprition_terms">
+          <img
+            src={require('../assets/about-us-img1.webp')}
+            alt="terms and conditions"
+            className="terms_img"
+          />
+        </div>
+        <div className="col-lg-6 col-md-6 col-sm-12 col_interprition_terms">
+          <p className="title_terms">{blogdetails.title}</p>
+          <p className="descr_terms">{blogdetails.main_description}</p>
+        </div>
+      </div>
+      {blogdetails.descriptions.map((desc) => (
+      <div>
 
-          <div className="d-flex flex-wrap">
+<div className=" d-flex justify-content-center align-items-center">
+  <div className="col-lg-6 col-md-6 col-sm-12">
+    <p>
+  {desc.description}
+    </p>
+  </div>
+  </div>
+  <div className="row d-flex justify-content-center align-items-center">
 
-            <div className="col-lg-6 col-md-6 col-sm-12 col_interprition_terms">
-              <img
-                  src={`${API_URL}/${blogdetails.img}`}
-                alt="terms and conditions"
-                className="terms_img"
-              />
-            </div>
-            <div className="col-lg-6 col-md-6 col-sm-12 col_interprition_terms">
-              <p className="title_terms">{blogdetails.title}</p>
-              <p className="descr_terms">{blogdetails.description}</p>
-            </div>
-          </div>
+  {desc.images && desc.images.map((img, index) => (
+  <div className="col-lg-4 col-md-6 col-sm-12  mt-3">
 
-          <div className=" d-flex justify-content-center align-items-center">
-            <div className="col-lg-6 col-md-6 col-sm-12">
-              <p>
-                sKassel excels in crafting innovative websites and apps,
-                seamlessly blending creativity with functionality. Clients trust
-                Kassel for top-notch digital solutions, a testament to their
-                industry prowess and dedication!
-              </p>
-            </div>
-            </div>
-            <div className="row">
+  <img
+        src={`${API_URL}/${img}`}
+      alt="terms and conditions"
+      className="blogdetails_img"
+    />
 
-            <div className="col-lg-4 col-md-6 col-sm-12">
-            <img
-                  src={`${API_URL}/${blogdetails.img}`}
-                alt="terms and conditions"
-                className="terms_img"
-              />
-            </div>
-            <div className="col-lg-4 col-md-6 col-sm-12">
-            <img
-                  src={`${API_URL}/${blogdetails.img}`}
-                alt="terms and conditions"
-                className="terms_img"
-              />
-            </div>  <div className="col-lg-4 col-md-6 col-sm-12">
-            <img
-                  src={`${API_URL}/${blogdetails.img}`}
-                alt="terms and conditions"
-                className="terms_img"
-              />
-            </div>
-            </div>
-            </div>
+  </div>
+  ))}
 
-       ))} 
+  </div>
+
+</div>
+      ))}
+    </div>
+  ))
+) : (
+  <div>No blogs found</div>
+)}
+
        </div> 
         </div>
       </section>
