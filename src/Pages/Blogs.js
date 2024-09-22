@@ -17,8 +17,9 @@ function Blogs() {
   const [selectedTagId, setSelectedTagId] = useState(null);
   const [dynamicBlog, setDynamicBlog] = useState([]);
 
-  const navigate = useNavigate();
-  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   // const tag_name = location.state?.tag_name;
   useEffect(() => {
     const fetchBlog = async () => {
@@ -71,12 +72,7 @@ function Blogs() {
   //     console.log(`Error getting data from frontend: ${error}`);
   //   }
   // };
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    // fetchDynamicBlog();
-    // fetchTags();
-    // fetchLastThreeBlogs();
-  }, []);
+
 
 
   // const handleTagClick = async (tag_name) => {

@@ -9,6 +9,7 @@ function BlogDetails() {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchBlog = async () => {
       try {
         const [blogsRes] = await Promise.all([

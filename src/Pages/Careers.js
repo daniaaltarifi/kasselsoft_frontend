@@ -163,9 +163,9 @@ function Careers() {
           </p>
         </div>
 
-        <div className="row">
+        <div className="row ">
           {careers.map((career) => (
-            <div className="col-lg-6 col-md-12 col-sm-12" key={career.id}>
+            <div className="col-lg-6 col-md-12 col-sm-12 mt-4" key={career.id}>
               <div className="card p-4">
                 <div className="d-flex justify-content-between mt-4">
                   <div className="d-flex flex-wrap">
