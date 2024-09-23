@@ -53,6 +53,8 @@ const path="services"
             {services.map((service) => (
               <div className="col-lg-6 col-md-12 col-sm-12" data-aos="fade-up"key={service.id}>
                 <div class="card card_services">
+                {/* <div className="card_content_scroll card_scroll_slider"> */}
+
                   <div className="cont_img_services_card">
                     <img
                       src={`${API_URL}/${service.img}`}
@@ -69,8 +71,9 @@ const path="services"
                       {service.description}
                     </p>
                   </div>
+                  </div>
                 </div>
-              </div>
+              // </div>
             ))}
           </div>
         </div>
@@ -93,6 +96,8 @@ const path="services"
             {howWeWork.map((how) => (
               <div className="col-lg-4 col-md-6 col-sm-12" key={how.id}>
                 <div class="card card_how_work">
+                <div className="card_scroll_services">
+
                   <div className="cont_img_services_card">
                     <img
                       src={`${API_URL}/${how.img}`}
@@ -111,7 +116,8 @@ const path="services"
                     </p>
                   </div>
                 </div>
-              </div>
+                </div>
+               </div>
             ))}
           </div>
         </div>

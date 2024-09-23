@@ -142,6 +142,8 @@ function LandingPage({ lang }) {
               {ExperienceHome.map((exp) => (
                 <div className="col-lg-4 col-md-6 col-sm-12"key={exp.id}>
                   <div class="card card_slider_exp">
+                  <div className="card_content_scroll card_scroll_slider">
+
                     <img
                       src={`${API_URL}/${exp.img}`}
                       className="card-img-top img-fluid img_slider_experience"
@@ -156,6 +158,7 @@ function LandingPage({ lang }) {
                       </p>
                     </div>
                   </div>
+                </div>
                 </div>
               ))}
             

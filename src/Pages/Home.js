@@ -130,7 +130,10 @@ function Home() {
         <div className="row">
           {homeServices.map((item, index) => (
             <div className="col-lg-4 col-md-6 col-sm-12" key={item.id}>
+              
               <div className="card card_icon_home">
+              <div className="card_content_scroll">
+
                 <img
                   src={`${API_URL}/${item.img }`}
                   className="img-fluid icon_home"
@@ -142,6 +145,7 @@ function Home() {
                     {item.description}
                   </p>
                 </div>
+              </div>
               </div>
             </div>
           ))}
@@ -173,6 +177,8 @@ function Home() {
             {cardHome.map((cardhome) => (
               <div className="col-lg-3 col-md-6 col-sm-12" key={cardhome.id}>
                 <div className="card card_services_home">
+
+                  <div className="card_content_scroll">
                   <div className="background_icon_home">
                     <img
                       src={`${API_URL}/${cardhome.icon}`}
@@ -186,6 +192,8 @@ function Home() {
                     </h5>
                     <p className="card-text">{cardhome.description}</p>
                   </div>
+                  </div>
+
                 </div>
               </div>
             ))}
