@@ -23,6 +23,8 @@ function JobDescription() {
   const [cv, setCv] = useState(null);
   const [application,setApplication] = useState([]);
   const [emailError, setEmailError] = useState("");
+  const [skillsList, setSkillsList] = useState([]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -75,16 +77,12 @@ function JobDescription() {
     }
     setCv(file);
   };
-  // const handleEmail= (e) => {
-  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   if (!emailRegex.test(e.target.value)) {
-  //     setEmailError("please enter valid Email");
-  //   } else {
-  //     setEmailError("");
-  //   }
-  //   setEmail(e.target.value);
-  // }
-
+  const handleAddSkill = () => {
+    if (skills.trim() !== "") {
+      setSkillsList([...skillsList, skills]);
+      setSkills(""); // Clear the input after adding
+    }
+  };
   const validateEmail = (email) => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailPattern.test(email);
@@ -109,7 +107,7 @@ function JobDescription() {
       !last_name ||
       !email ||
       !exp ||
-      !skills ||
+      !skillsList ||
       !phone ||
       !cv
     ) {
@@ -129,7 +127,7 @@ function JobDescription() {
       formData.append("last_name", last_name);
       formData.append("email", email);
       formData.append("exp", exp);
-      formData.append("skills", skills);
+      formData.append("skills", skillsList);
       formData.append("phone", phone);
       formData.append("cv", cv);
 
@@ -152,6 +150,7 @@ function JobDescription() {
       setEmail("");
       setexp("");
       setSkills("");
+      setSkillsList([])
       setPhone("");
       setCv(null);
     } catch (error) {
@@ -329,43 +328,53 @@ function JobDescription() {
                       />
                     </div>
 
-                   
-                    <div className="textarea-control">
-                <label for="exp">
-                  {lang === "ar" ? `المهارات` : `Skills `}
+                  
+              <div className="form-control">
+                <label htmlFor="exp">
+                  {lang === "ar" ? `المهارات` : `Skills`}
                 </label>
-                <textarea
+                <input
                   name="exp"
                   id="exp"
                   cols="50"
                   rows="4"
                   placeholder={
-                    lang === "ar"
-                      ? `ادخل المهارات`
-                      : `Enter your Skills `
+                    lang === "ar" ? `ادخل المهارات` : `Enter your Skills`
                   }
                   value={skills}
                   onChange={(e) => setSkills(e.target.value)}
-                ></textarea>
+                />
               </div>
-                    <div className="form-control">
-                      <label for="phone">
-                        {lang === "ar" ? `رقم الهاتف` : `Phone  `}
-                      </label>
-                      <input
-                        type="text"
-                        id="phone"
-                        name="phone"
-                        placeholder={
-                          lang === "ar"
-                            ? `ادخل رقم الهاتف`
-                            : `Enter your phone  `
-                        }
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                      />
-                    </div>
-
+                <button type="button" onClick={handleAddSkill} className="add_skill_btn_career" >
+                 <p>
+                 {lang === "ar" ? `أضف المهارة` : `Add Skill`}
+                  </p> 
+                </button>
+                {skillsList.length > 0 && (
+            <div className="skills-display">
+              <ul>
+                {skillsList.map((skill, index) => (
+                  <li key={index}>{skill}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+               
+  <div className="form-control">
+                <label for="phone">
+                  {lang === "ar" ? `رقم الهاتف` : `Phone  `}
+                </label>
+                <input
+                  type="text"
+                  id="phone"
+                  name="phone"
+                  placeholder={
+                    lang === "ar" ? `ادخل رقم الهاتف` : `Enter your phone  `
+                  }
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+              </div>
                     <div className="form-control">
                       <label for="upload">
                         {lang === "ar" ? `السيرة الذاتية` : `Upload your CV  `}

@@ -112,6 +112,10 @@ overflow: hidden;
     transition: all 0.8s ease-out 0s;
 
 }
+.card_scroll_slider{
+  max-height: 550px; 
+
+}
 .card_slider_exp:hover{
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border: none;

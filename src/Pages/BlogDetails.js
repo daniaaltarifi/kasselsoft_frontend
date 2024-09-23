@@ -29,57 +29,57 @@ function BlogDetails() {
       <section className="margin_section">
         <div className="container text-center">
           <div className="row">
-          {Array.isArray(blogs) ? (
-  blogs.map((blogdetails) => (
-    <div key={blogdetails.id}> {/* Add a key */}
-      <div className="d-flex flex-wrap">
-        <div className="col-lg-6 col-md-6 col-sm-12 col_interprition_terms">
-          <img
-            src={require('../assets/about-us-img1.webp')}
-            alt="terms and conditions"
-            className="terms_img"
-          />
-        </div>
-        <div className="col-lg-6 col-md-6 col-sm-12 col_interprition_terms">
-          <p className="title_terms">{blogdetails.title}</p>
-          <p className="descr_terms">{blogdetails.main_description}</p>
-        </div>
-      </div>
-      {blogdetails.descriptions.map((desc) => (
-      <div>
-
-<div className=" d-flex justify-content-center align-items-center">
-  <div className="col-lg-6 col-md-6 col-sm-12">
-    <p>
-  {desc.description}
-    </p>
-  </div>
-  </div>
-  <div className="row d-flex justify-content-center align-items-center">
-
-  {desc.images && desc.images.map((img, index) => (
-  <div className="col-lg-4 col-md-6 col-sm-12  mt-3">
-
-  <img
-        src={`${API_URL}/${img}`}
-      alt="terms and conditions"
-      className="blogdetails_img"
-    />
-
-  </div>
-  ))}
-
-  </div>
-
-</div>
-      ))}
-    </div>
-  ))
-) : (
-  <div>No blogs found</div>
-)}
-
-       </div> 
+            {Array.isArray(blogs) ? (
+              blogs.map((blogdetails) => (
+                <div key={blogdetails.id}>
+                  {" "}
+                  {/* Add a key */}
+                  <div className="d-flex flex-wrap">
+                    <div className="col-lg-6 col-md-6 col-sm-12 col_interprition_terms">
+                      <img
+                        src={`${API_URL}/${blogdetails.main_img}`}
+                        alt="terms and conditions"
+                        className="terms_img"
+                      />
+                    </div>
+                    <div className="col-lg-6 col-md-6 col-sm-12 col_interprition_terms">
+                      <p className="title_terms">{blogdetails.title}</p>
+                      <p className="descr_terms">
+                        {blogdetails.main_description}
+                      </p>
+                    </div>
+                  </div>
+                  {blogdetails.descriptions.map((desc) => (
+                    <div>
+                      <div className=" d-flex justify-content-center align-items-center">
+                        <div className="col-lg-6 col-md-6 col-sm-12">
+                          <p
+                            dangerouslySetInnerHTML={{
+                              __html: desc.description,
+                            }}
+                          ></p>
+                        </div>
+                      </div>
+                      <div className="row d-flex justify-content-center align-items-center">
+                        {desc.images &&
+                          desc.images.map((img, index) => (
+                            <div className="col-lg-4 col-md-6 col-sm-12  mt-3">
+                              <img
+                                src={`${API_URL}/${img}`}
+                                alt="terms and conditions"
+                                className="blogdetails_img"
+                              />
+                            </div>
+                          ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ))
+            ) : (
+              <div>No blogs found</div>
+            )}
+          </div>
         </div>
       </section>
     </>
