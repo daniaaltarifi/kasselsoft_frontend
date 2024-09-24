@@ -27,6 +27,7 @@ function Contect() {
     const [contactFooter, setContactFooter] = useState([]);
 
     useEffect(() => {
+      window.scrollTo(0, 0);
       const fetchAllData = async () => {
         try {
           const contactFooterRes = await axios.get(`${API_URL}/contactfooter/${lang}`);
@@ -124,25 +125,18 @@ function Contect() {
       {lang === "ar" ? "الموقع" : "Location:"}
     </h3>
     <p className="mb-0">
-      {contactFooter
-        .filter(item => /^[a-zA-Z\s]+$/.test(item.subtitle)) // Find all locations with letters only
-        .map((location, index) => (
-          <span key={index}>
-            {location.subtitle}
-            <br />
-          </span>
-        ))}
-      {/* Default location if none found */}
-      {!contactFooter.some(item => /^[a-zA-Z\s]+$/.test(item.subtitle)) && (
-        <>
-          V Business Center
-          <br />
-          Amman
-          <br />
-          Jordan
-        </>
-      )}
-    </p>
+  {contactFooter
+    .filter(item => item.link && item.link.includes('https://www.google.com/maps/embed')) // Check for Google Maps embed link
+    .map((location, index) => (
+      <span key={index}>
+      
+          {location.subtitle}
+        <br />
+      </span>
+    ))}
+  
+</p>
+
   </div>
 </div>
 
@@ -274,7 +268,7 @@ function Contect() {
         </div>
         <div className="col-md-12 animated-input" style={{ animationDelay: "0.6s" }}>
           <input
-            type="tel"
+            type="text"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
@@ -309,10 +303,8 @@ function Contect() {
                 </div>
                 <div className="map mt-5">
                 {contactFooter
-    .filter(item => 
-      /^[a-zA-Z\s]+$/.test(item.subtitle) && item.link // Check if subtitle contains only letters and spaces, and has a link
-    )
-    .map((location, index) => (
+    .filter(item => item.link && item.link.includes('https://www.google.com/maps/embed')) // Check for Google Maps embed link
+    .map((location, index) =>  (
       <iframe
         key={index}
         src={location.link} // Use the fetched link

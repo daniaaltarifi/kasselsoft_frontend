@@ -4,12 +4,12 @@ import LandingPage from "./LandingPage";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams,useNavigate } from "react-router-dom";
 function Home() {
   const API_URL = process.env.REACT_APP_API_URL;
   const { lang } = useParams();
   const aosAnimation = lang === 'ar' ? 'fade-left' : 'fade-right';
-
+const navigate=useNavigate()
   const [homeData, setHomeData] = useState([]);
   const [homeServices, setHomeServices] = useState([]);
   const [whychooseusHome, setWhychooseusHome] = useState([]);
@@ -89,6 +89,7 @@ function Home() {
                 type="button"
                 className="learn_more_btn_home "
                 data-aos={aosAnimation}
+                onClick={()=>{navigate(`/${lang}/about`)}}
               >
                 {mainhome.button}
               </button>

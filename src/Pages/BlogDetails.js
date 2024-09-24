@@ -27,7 +27,7 @@ function BlogDetails() {
     <>
       <Mainbackground path={path} />
       <section className="margin_section">
-        <div className="container text-center">
+        <div className="container">
           <div className="row">
             {Array.isArray(blogs) ? (
               blogs.map((blogdetails) => (
@@ -51,7 +51,7 @@ function BlogDetails() {
                   </div>
                   {blogdetails.descriptions.map((desc) => (
                     <div>
-                      <div className=" d-flex justify-content-center align-items-center">
+                      <div className="d-flex ">
                         <div className="col-lg-6 col-md-6 col-sm-12">
                           <p
                             dangerouslySetInnerHTML={{
