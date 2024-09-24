@@ -3,7 +3,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import Mainbackground from "../components/Mainbackground";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 function About() {
   const API_URL = process.env.REACT_APP_API_URL;
   const [aboutTeme, setAboutTeme] = useState([]);
@@ -13,6 +13,8 @@ function About() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const { lang } = useParams();
+  const navigate=useNavigate()
+
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetchAllData = async () => {
@@ -90,7 +92,8 @@ function About() {
                   <p>Loading content...</p>
                 )}
 
-                <button id="about-btn">View More</button>
+                <button id="about-btn" onClick={()=>{navigate(`/${lang}/services`)}}
+                > {lang === 'ar' ?" شاهد المزيد" : "View More"}</button>
               </div>
             </div>
             <div className="col-md-6 py-3 py-md-0">

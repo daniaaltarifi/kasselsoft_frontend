@@ -1,40 +1,70 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "../Css/footer.css";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 function Footer() {
   const API_URL = process.env.REACT_APP_API_URL;
   const location = useLocation();
   const lang = location.pathname.split("/")[1] || "en";
   const [staticFooter, setStaticFooter] = useState([]);
   const [contactFooter, setcontactFooter] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+
   useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+    
+    
     const fetchAllData = async () => {
       try {
         const [staticFooterRes, contactFooterRes] = await Promise.all([
           axios.get(`${API_URL}/footer/${lang}`),
           axios.get(`${API_URL}/contactfooter/${lang}`),
-          // axios.get(`${API_URL}/homewhychooseus/${lang}`),
-          // axios.get(`${API_URL}/cardhome/${lang}`),
         ]);
 
         setStaticFooter(staticFooterRes.data);
         setcontactFooter(contactFooterRes.data);
       } catch (err) {
         console.error("Error fetching data:", err);
-
       }
     };
 
     fetchAllData();
   }, [lang]);
+  const scrolltoTop = () => [window.scrollTo(0, 0)];
+  const [showButtons, setShowButtons] = useState(false);
+
+  const toggleButtons = () => {
+    setShowButtons(!showButtons);
+  };
+  const buttons = [
+    {
+      link: "https://l.instagram.com/?u=https%3A%2F%2Fwa.me%2Fmessage%2F74Q6F22FDGNYN1&e=AT1WUZrPRUTSfX-I4FkVPpz8WjFo_-7OTsd_9xELwzOc6aD_sVn5FW5r58PAEhW24zoXvNtrI9adFb-ArE0j1L08t30mHgha",
+      icon: "bi bi-whatsapp icon_footer_fixed"
+    },
+    {
+      link: "https://www.instagram.com/_kassel_/?igsh=MWRjcHk5MGJtYWVmcw%3D%3D",
+      icon: "bi bi-instagram icon_footer_fixed"
+    },
+    {
+      link: "https://www.facebook.com/people/kasselsoft/61555183182719/?mibextid=PlNXYD",
+      icon: "bi bi-facebook icon_footer_fixed"
+    },
+    {
+      link: "https://www.linkedin.com/company/kasselsoft/",
+      icon: "bi bi-linkedin icon_footer_fixed"
+    }
+  ];
   return (
     <>
       {/* Remove the container if you want to extend the Footer to full width. */}
       <div className=" my-0 footer mt-5">
         {/* Footer */}
-        <footer >
+        <footer>
           {/* Grid container */}
           <div className="container p-4 pb-0">
             {/* Section: Links */}
@@ -84,24 +114,21 @@ function Footer() {
                 <hr className="w-100 clearfix d-md-none" />
                 {/* Grid column */}
                 {staticFooter.map((mainfooter) => (
-                  <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3"key={mainfooter.id}>
+                  <div
+                    className="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3"
+                    key={mainfooter.id}
+                  >
                     <h6 className="text-uppercase mb-4 font-weight-bold">
                       {mainfooter.support}
                     </h6>
                     <Link to={`${lang}/${mainfooter.terms_link}`}>
-                      <p>
-                        <a className="rgb(203 203 203)">{mainfooter.terms}</a>
-                      </p>
+                      <p>{mainfooter.terms}</p>
                     </Link>
                     <Link to={`${lang}${mainfooter.privacy_link}`}>
-                      <p>
-                        <a className="rgb(203 203 203)">{mainfooter.privacy}</a>
-                      </p>
+                      <p>{mainfooter.privacy}</p>
                     </Link>
                     <Link to={`${lang}${mainfooter.contact_link}`}>
-                      <p>
-                        <a className="rgb(203 203 203)">{mainfooter.contact}</a>
-                      </p>
+                      <p>{mainfooter.contact}</p>
                     </Link>
                   </div>
                 ))}
@@ -110,31 +137,24 @@ function Footer() {
                 <hr className="w-100 clearfix d-md-none" />
                 {/* Grid column */}
                 {staticFooter.map((mainfooter) => (
-                  <div className="col-md-6 col-lg-2 col-xl-2 mx-auto mt-3" key={mainfooter.id}>
+                  <div
+                    className="col-md-6 col-lg-2 col-xl-2 mx-auto mt-3"
+                    key={mainfooter.id}
+                  >
                     <h6 className="text-uppercase mb-4 font-weight-bold">
                       {mainfooter.company}
                     </h6>
                     <Link to={`${lang}${mainfooter.home_link}`}>
-                      <p>
-                        <a className="rgb(203 203 203)">{mainfooter.home}</a>
-                      </p>
+                      <p>{mainfooter.home}</p>
                     </Link>
                     <Link to={`${lang}${mainfooter.services_link}`}>
-                      <p>
-                        <a className="rgb(203 203 203)">
-                          {mainfooter.services}
-                        </a>
-                      </p>
+                      <p>{mainfooter.services}</p>
                     </Link>
                     <Link to={`${lang}${mainfooter.about_link}`}>
-                      <p>
-                        <a className="rgb(203 203 203)">{mainfooter.about}</a>
-                      </p>
+                      <p>{mainfooter.about}</p>
                     </Link>
                     <Link to={`${lang}${mainfooter.career_link}`}>
-                      <p>
-                        <a className="rgb(203 203 203)">{mainfooter.career}</a>
-                      </p>
+                      <p>{mainfooter.career}</p>
                     </Link>
                   </div>
                 ))}
@@ -153,12 +173,17 @@ function Footer() {
                         {contact.title}
                       </h6>
                       <p>
-                        <Link
-                          to="https://kassel-company.vercel.app/en"
-                          target="blank"
-                        >
-                          {contact.subtitle}
-                        </Link>
+                        {contact.link ? (
+                          <Link
+                            to={contact.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {contact.subtitle}
+                          </Link>
+                        ) : (
+                          contact.subtitle // Display subtitle as plain text if no link
+                        )}
                       </p>
                     </div>
                   ))}
@@ -170,63 +195,102 @@ function Footer() {
             </section>
             {/* Section: Links */}
             <hr className="my-3" />
-            {/* Section: Copyright */}
-            <section className="p-3">
-              <div className="row d-flex ">
-                {/* Grid column */}
 
-                {/* Grid column */}
-                {/* Grid column */}
-                <div className="col-md-12 col-lg-12 ml-lg-0 text-center  ">
+            {/* Section: Copyright */}
+            <section className="">
+              <div className="row ">
+                <div className="col-lg-4 col-md-4 col-sm-12">
+                  <button
+                    type="button"
+                    className="btn arrow_btn"
+                    onClick={scrolltoTop}
+                  >
+                    <i className="fa-solid fa-arrow-up fa-lg icon_footer_fixed"></i>
+                  </button>
+                </div>
+
+                <div className="col-lg-4 col-md-4 col-sm-12 text-center">
                   {/* Facebook */}
-                  <a
-                    href="https://www.facebook.com/people/kasselsoft/61555183182719/?mibextid=PlNXYD"
+                  <Link
+                    to="https://www.facebook.com/people/kasselsoft/61555183182719/?mibextid=PlNXYD"
                     className="btn btn-floating m-1"
-                    target="blank"
+                    target="_blank"
                     role="button"
                     style={{ color: "rgb(60 102 171)", fontSize: "25px" }}
                   >
                     <i className="bi bi-facebook"></i>
-                  </a>
+                  </Link>
                   {/* Twitter */}
-                  <a
-                    href="https://www.linkedin.com/company/kasselsoft/"
+                  <Link
+                    to="https://www.linkedin.com/company/kasselsoft/"
                     className="btn btn-floating m-1"
-                    target="blank"
+                    target="_blank"
                     style={{ color: "rgb(60 102 171)", fontSize: "25px" }}
                   >
                     <i className="bi bi-linkedin"></i>
-                  </a>
-                  {/* Google */}
-                  {/* <a
-                    href="https://www.facebook.com/people/kasselsoft/61555183182719/?mibextid=PlNXYD"
-                    className="btn btn-floating m-1"
-                    target="blank"
-                    style={{ color: "rgb(60 102 171)", fontSize: "25px" }}
-                  >
-                    <i className="bi bi-google"></i>
-                  </a> */}
+                  </Link>
                   {/* Instagram */}
-                  <a
-                    href="https://www.instagram.com/_kassel_/?igsh=MWRjcHk5MGJtYWVmcw%3D%3D"
+                  <Link
+                    to="https://www.instagram.com/_kassel_/?igsh=MWRjcHk5MGJtYWVmcw%3D%3D"
                     className="btn btn-floating m-1"
-                    target="blank"
+                    target="_blank"
                     style={{ color: "rgb(60 102 171)", fontSize: "25px" }}
                   >
                     <i className="bi bi-instagram"></i>
-                  </a>
-                  <a
-                    href="https://l.instagram.com/?u=https%3A%2F%2Fwa.me%2Fmessage%2F74Q6F22FDGNYN1&e=AT1WUZrPRUTSfX-I4FkVPpz8WjFo_-7OTsd_9xELwzOc6aD_sVn5FW5r58PAEhW24zoXvNtrI9adFb-ArE0j1L08t30mHgha"
+                  </Link>
+                  <Link
+                    to="https://l.instagram.com/?u=https%3A%2F%2Fwa.me%2Fmessage%2F74Q6F22FDGNYN1&e=AT1WUZrPRUTSfX-I4FkVPpz8WjFo_-7OTsd_9xELwzOc6aD_sVn5FW5r58PAEhW24zoXvNtrI9adFb-ArE0j1L08t30mHgha"
                     className="btn btn-floating m-1"
-                    target="blank"
+                    target="_blank"
                     style={{ color: "rgb(60 102 171)", fontSize: "25px" }}
                   >
                     <i className="bi bi-whatsapp"></i>
-                  </a>
+                  </Link>
                 </div>
-                {/* Grid column */}
+
+                {/* New column for Floating Action Button */}
+                <div className="col-lg-4 col-md-4 col-sm-12 text-center">
+                  <div style={{ position: "relative" }}>
+                    {showButtons && (
+                   <div className="floating-buttons">
+                   {buttons.map((button, index) => (
+                     <button
+                       key={index}
+                       className="btn btn-circle"
+                       data-aos="fade-right"
+                       data-aos-duration="800"
+                       data-aos-delay={index * 300} // Adjust this delay for each button
+                       style={{ opacity: showButtons ? 1 : 0 }} // Control visibility with opacity
+                     >
+                       <Link
+                         to={button.link}
+                         className="btn btn-floating m-1"
+                         target="_blank"
+                       >
+                         <i className={button.icon}></i>
+                       </Link>
+                     </button>
+                   ))}
+                 </div>
+                  
+                    )}
+                    <button
+                      type="button"
+                      onClick={toggleButtons}
+                      className="btn btn-circle"
+                      style={{
+                        position: "fixed",
+                        bottom: "20px",
+                        right: "10px",
+                      }} // Remove width, height, border-radius since it's in CSS
+                    >
+                      <i className="fa-solid fa-headset fa-lg icon_footer_fixed"></i>{" "}
+                    </button>
+                  </div>
+                </div>
               </div>
             </section>
+
             {/* Section: Copyright */}
           </div>
           {/* Grid container */}

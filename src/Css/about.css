@@ -278,7 +278,11 @@ font-size: 210%;
   position: relative;
   transition: color 0.5s ease-in-out;
 }
-
+.nameofteam_about{
+  font-size: 25px;
+  font-weight: 700;
+  color: #000
+}
 /* Change h1, h2, h3 color on hover */
 #team .card:hover h1, 
 #team .card:hover h2, 
