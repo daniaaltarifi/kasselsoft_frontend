@@ -91,7 +91,9 @@ function Navbar() {
 
         {/* Navigation items */}
         <div
-          className="collapse navbar-collapse justify-content-center"
+          className={`collapse navbar-collapse justify-content-center ${
+            lang === "ar" ? "rtl" : "ltr"
+          }`}
           id="navbarSupportedContent"
           ref={navbarRef}
         >
