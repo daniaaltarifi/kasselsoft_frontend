@@ -43,7 +43,7 @@ function Footer() {
   };
   const buttons = [
     {
-      link: "https://l.instagram.com/?u=https%3A%2F%2Fwa.me%2Fmessage%2F74Q6F22FDGNYN1&e=AT1WUZrPRUTSfX-I4FkVPpz8WjFo_-7OTsd_9xELwzOc6aD_sVn5FW5r58PAEhW24zoXvNtrI9adFb-ArE0j1L08t30mHgha",
+      link: "https://wa.me/962790039555?src=qr",
       icon: "bi bi-whatsapp icon_footer_fixed"
     },
     {
@@ -239,7 +239,7 @@ function Footer() {
                     <i className="bi bi-instagram"></i>
                   </Link>
                   <Link
-                    to="https://l.instagram.com/?u=https%3A%2F%2Fwa.me%2Fmessage%2F74Q6F22FDGNYN1&e=AT1WUZrPRUTSfX-I4FkVPpz8WjFo_-7OTsd_9xELwzOc6aD_sVn5FW5r58PAEhW24zoXvNtrI9adFb-ArE0j1L08t30mHgha"
+                    to="https://wa.me/962790039555?src=qr"
                     className="btn btn-floating m-1"
                     target="_blank"
                     style={{ color: "rgb(60 102 171)", fontSize: "25px" }}
