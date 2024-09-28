@@ -36,6 +36,10 @@ function Navbar() {
     if (navbarRef.current.classList.contains("show")) {
       navbarRef.current.classList.remove("show");
     }
+     const navbarToggle = document.querySelector(".navbar-toggler");
+  if (navbarToggle) {
+    navbarToggle.click(); 
+  }
   };
 
   // Add shadow on scroll
