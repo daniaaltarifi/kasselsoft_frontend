@@ -16,6 +16,11 @@ function Blogs() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  const stripHtmlTags = (html) => {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = html;
+    return tempDiv.textContent || tempDiv.innerText || "";
+  };
   useEffect(() => {
     const fetchBlog = async () => {
       try {
@@ -164,9 +169,9 @@ function Blogs() {
                               </div>
                             </div>
                           </div>
-                          <p className="card-text desc_blog ">
-                            {blog.main_description}
-                          </p>
+                          <p className="card-text desc_blog">
+        {stripHtmlTags(blog.main_description)}
+      </p>
                         </div>
                       </div>
                     </div>

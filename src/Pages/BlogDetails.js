@@ -44,9 +44,11 @@ function BlogDetails() {
                     </div>
                     <div className="col-lg-6 col-md-6 col-sm-12 col_interprition_terms">
                       <p className="title_terms">{blogdetails.title}</p>
-                      <p className="descr_terms">
-                        {blogdetails.main_description}
-                      </p>
+                      <p
+                            dangerouslySetInnerHTML={{
+                              __html: blogdetails.main_description,
+                            }}
+                          ></p>
                     </div>
                   </div>
                   {blogdetails.descriptions.map((desc) => (

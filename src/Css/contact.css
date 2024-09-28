@@ -5,6 +5,7 @@
 .contact-item {
     display: flex;
     align-items: center; /* Align items in a horizontal row */
+    
   }
   
   .icon-circle {
@@ -194,7 +195,17 @@ textarea.styled-input {
         text-align: center;
         margin: 4px !important;
     }
-    
+      .contact-item {
+    flex-direction: column; /* Stack items vertically on small screens */
+    align-items: center; /* Align items to the start */
+    padding: 10px; /* Adjust padding */
+  }
+.contact-item h3 {
+text-align: center;
+}
+  .icon-circle {
+    margin-bottom: 10px; /* Space between icon and text */
+  }
     .container-contact .col-md-6 {
         padding: 1rem;
     }
