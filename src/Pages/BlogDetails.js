@@ -16,7 +16,6 @@ function BlogDetails() {
           axios.get(`${API_URL}/blogs/${lang}/getbyidfront/${id}`),
         ]);
         setBlogs(blogsRes.data);
-        console.log(blogsRes.data);
       } catch (err) {
         console.error("Error fetching data:", err);
       }

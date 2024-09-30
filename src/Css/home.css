@@ -87,12 +87,11 @@
 }
 .main_img_home {
   display: block;
-  width: 100%; /* Adjust as needed */
-  height: auto; /* Maintain aspect ratio */
-  /* animation: moveImage 10s  linear infinite; */
-  height: 62%;
-  animation: jump 3s ease-in-out infinite;
+  width: 100%; /* Full width of its container */
+  height: 62%; /* Maintain aspect ratio */
   z-index: 2;
+  max-height: 62vh; /* Example: Control height relative to viewport */
+
 }
 @keyframes jump {
   0% {
@@ -157,8 +156,11 @@
 }
 
 .icon_home {
-  width: 30%;
-  height: 70px;
+  /* width: 30%;
+  height: 70px; */
+  width: 100px; /* or desired max width */
+  height: 70px; /* maintains aspect ratio */
+  max-width: 300px; 
   object-fit: contain;
   z-index: 2;
   margin-bottom: 2vh;

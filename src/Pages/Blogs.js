@@ -32,80 +32,18 @@ function Blogs() {
         setTags(tagsResponse.data);
         const lastthreeblogs = blogsRes.data.slice(-3);
         setLastThreeBlogs(lastthreeblogs);
-        console.log(lastthreeblogs);
       } catch (err) {
         console.error("Error fetching data:", err);
       }
     };
     fetchBlog();
   }, [lang]);
-  // const fetchTags = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       "https://ba9maacademy.kasselsoft.online/tag/uniquetag"
-  //     );
-  //     const tags = response.data;
-  //     setTags(tags); // Assuming setTags is a function to update your state
-  //   } catch (error) {
-  //     console.error("Failed to fetch tags:", error);
-  //   }
-  // };
-
-  // const fetchLastThreeBlogs = async () => {
-  //   const response = await axios.get(
-  //     "https://ba9maacademy.kasselsoft.online/blog/lastthree"
-  //   );
-  //   const blogsData = response.data;
-  //   const approvedBlogs = blogsData.filter(
-  //     (blog) => blog.action === "approved"
-  //   );
-  //   setLastThreeBlogs(approvedBlogs);
-  // };
-  // const fetchDynamicBlog = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       "https://ba9maacademy.kasselsoft.online/dynamicblog/"
-  //     );
-  //     const data = response.data;
-  //     setDynamicBlog(data);
-  //   } catch (error) {
-  //     console.log(`Error getting data from frontend: ${error}`);
-  //   }
-  // };
-
-  // const handleTagClick = async (tag_name) => {
-  //   try {
-  //     const response = await axios.get(
-  //       `https://ba9maacademy.kasselsoft.online/tag/blogbytag/${tag_name}`
-  //     );
-  //     const blogs = response.data;
-  //     const mappedBlogs = blogs.map((tag) => ({
-  //       id: tag.blog_id, // Adjust as needed
-  //       title: tag.title,
-  //       author: tag.author,
-  //       descr: tag.descr,
-  //       img: tag.img,
-  //       tag_name: tag.tag_name,
-  //     }));
-  //     setBlogs(mappedBlogs);
-  //   } catch (error) {
-  //     console.error("Failed to fetch blogs:", error);
-  //   }
-  // };
+ 
   const [displayBlogs, setDisplayBlogs] = useState([]);
 
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
-  // Number of blogs per slide
-  const blogsPerSlide = 5;
-
-  // Calculate total number of slides
-  // const totalSlides = Math.ceil(displayBlogs.length / blogsPerSlide);
-
-  // Update the displayBlogs state based on filters
   useEffect(() => {
     let filteredBlogs = [];
-    console.log("tag", selectedTagId);
     if (selectedTagId !== null) {
       filteredBlogs = blogs.filter((blog) => blog.tag_id === selectedTagId);
     } else {
@@ -113,13 +51,8 @@ function Blogs() {
     }
 
     setDisplayBlogs(filteredBlogs);
-    setCurrentSlideIndex(0); // Reset to the first slide when filtering changes
   }, [blogs, selectedTagId]);
 
-  // Calculate which blogs to display based on current slide index
-  const startIndex = currentSlideIndex * blogsPerSlide;
-  const endIndex = startIndex + blogsPerSlide;
-  // const visibleBlogs = displayBlogs.slice(startIndex, endIndex);
 
   return (
     <>

@@ -34,7 +34,6 @@ function About() {
         setAboutServices(aboutServicesRes.data);
         setTitlesHome(titlesHomeRes.data);
         setAboutData(aboutData.data[0]);
-        console.log("first",aboutData.data)
       } catch (err) {
         setError(err.message);
       } finally {

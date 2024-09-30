@@ -13,7 +13,8 @@ function Footer() {
   const [staticFooter, setStaticFooter] = useState([]);
   const [contactFooter, setcontactFooter] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-
+  const [erroremail, seterroremail] = useState("");
+const [email,setemail]=useState("")
   useEffect(() => {
     AOS.init();
     AOS.refresh();
@@ -59,6 +60,25 @@ function Footer() {
       icon: "bi bi-linkedin icon_footer_fixed"
     }
   ];
+  const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
+
+  const handleSubscribe = async () => {
+      if (!isValidEmail(email)) {
+          seterroremail("Invalid email address")
+          return;
+      }
+      try {
+          const response = await axios.post(`${API_URL}/subscribe/add`, { email: email });
+          setemail(" ");
+          seterroremail(" ")
+      } catch (error) {
+        if (error.response && error.response.status === 409) {
+          seterroremail("Email already subscribed")
+      } else {
+          console.log(`Error fetching post data: ${error.response?.data?.message || error.message}`);
+      }      }
+  };
+  
   return (
     <>
       {/* Remove the container if you want to extend the Footer to full width. */}
@@ -89,8 +109,9 @@ function Footer() {
                       <div className="input-group mb-3">
                         <button
                           className="btn "
-                          type="submit"
+                          type="button"
                           id="emailSubmit"
+                          onClick={handleSubscribe}
                           style={{
                             background: "rgb(60 102 171)",
                             color: "white",
@@ -104,9 +125,16 @@ function Footer() {
                           placeholder="Enter your email"
                           aria-label="Email"
                           required
+                          value={email}
                           style={{ boxShadow: "none" }}
+                          onChange={(e)=>{setemail(e.target.value)}}
                         />
+                      
                       </div>
+                      <p style={{color:"red",fontSize:"13px"}}>
+
+{erroremail !==null ? erroremail:" "}
+                      </p>
                     </form>
                   </div>
                 ))}

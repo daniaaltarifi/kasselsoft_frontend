@@ -73,7 +73,7 @@ function Navbar() {
         <div className="toggle_sm ">
           <Link to={`/${lang}`} className="navbar-brand">
             <img
-              src={require("../assets/kassel_logo3.png")}
+              src={require("../assets/kassel_logo3.webp")}
               alt="logo ba9ma"
               className="logo_size img_icon_navbar"
             />
