@@ -8,7 +8,6 @@ import axios from "axios";
 
 function LandingPage({ lang }) {
   const API_URL = process.env.REACT_APP_API_URL;
-  const aosAnimation = lang === 'ar' ? 'fade-left' : 'fade-right';
   const [titlesHome, setTitlesHome] = useState([]);
   const [imgSliderHome, setImgSliderHome] = useState([]);
   const [CareersHome, setCareersHome] = useState([]);
@@ -98,6 +97,7 @@ function LandingPage({ lang }) {
                     src={`${API_URL}/${img.img}`}
                     alt={`slider-img-${index}`}
                     className="slider_img_home"
+                    //  loading="lazy"
                   />
                 </div>
               ))}
@@ -121,6 +121,7 @@ function LandingPage({ lang }) {
                     src={`${API_URL}/${career.icon}`}
                     alt="rocket"
                     className="img_carrers_home"
+                    //  loading="lazy"
                   />
                   <p className="number_careers_home">
                     <CountUp end={career.count} />+
@@ -147,7 +148,8 @@ function LandingPage({ lang }) {
                     <img
                       src={`${API_URL}/${exp.img}`}
                       className="card-img-top img-fluid img_slider_experience"
-                      alt="..."
+                      alt="experience"
+                      //  loading="lazy"
                     />
                     <div className="card-body">
                       <h5 className="card-title title_slider_exp">

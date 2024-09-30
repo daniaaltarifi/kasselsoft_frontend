@@ -34,7 +34,6 @@ function Careers() {
     }
   };
   useEffect(() => {
-    // AOS.init({ duration: 1200 });
     AOS.init();
     AOS.refresh();
     window.scrollTo(0, 0);

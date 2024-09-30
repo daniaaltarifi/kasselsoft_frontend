@@ -6,7 +6,6 @@ import axios from "axios";
 import { Link, useParams, useLocation } from "react-router-dom";
 function Contect() {
   const API_URL = process.env.REACT_APP_API_URL;
-  // State to store form data
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,11 +15,8 @@ function Contect() {
 
   // State to store success or error messages
   const [responseMessage, setResponseMessage] = useState("");
-
   const location = useLocation();
   const lang = location.pathname.split("/")[1] || "en";
-  console.log("language: " + lang);
-
   const [contactFooter, setContactFooter] = useState([]);
 
   useEffect(() => {
