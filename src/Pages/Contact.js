@@ -132,7 +132,7 @@ function Contect() {
                             (item) =>
                               item.link &&
                               item.link.includes(
-                                "https://www.google.com/maps/embed"
+                                "maps.app.goo.gl"
                               )
                           ) // Check for Google Maps embed link
                           .map((location, index) => (
