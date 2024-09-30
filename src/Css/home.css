@@ -91,7 +91,7 @@
   height: 62%; /* Maintain aspect ratio */
   z-index: 2;
   max-height: 62vh; /* Example: Control height relative to viewport */
-
+  animation: jump 5s ease infinite;
 }
 @keyframes jump {
   0% {
@@ -160,7 +160,7 @@
   height: 70px; */
   width: 100px; /* or desired max width */
   height: 70px; /* maintains aspect ratio */
-  max-width: 300px; 
+  max-width: 300px;
   object-fit: contain;
   z-index: 2;
   margin-bottom: 2vh;
